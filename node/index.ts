@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import connect from 'connect'
 import openUrl from 'open'
 import serveStatic from 'serve-static'
-import { tryPort } from 'shared'
+import { tryPort } from '../shared'
 import { ApiMiddleware } from './middleware'
 
 export * from './middleware'
