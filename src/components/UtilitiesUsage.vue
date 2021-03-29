@@ -19,7 +19,7 @@ import { categorized } from '~/logic/data'
           </span>
           <sup class="opacity-50 ml-1">{{ classes.length }}</sup>
         </div>
-        <ClassesList :classes="classes" />
+        <ClassesList :classes="classes" count="count" />
       </div>
     </div>
   </div>

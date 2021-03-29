@@ -4,8 +4,8 @@ import { AnalysisReport, uniq } from '../../shared'
 
 export const data = ref<AnalysisReport | null>()
 
-export async function fetchData() {
-  data.value = await fetch('/api/report.json')
+export async function fetchData(refetch = false) {
+  data.value = await fetch(`/api/report.json${refetch ? '?force=true' : ''}`)
     .then(r => r.json())
   return data.value
 }
@@ -55,10 +55,13 @@ export const categorized = computed(() => {
   if (!data.value)
     return {}
 
-  return categories.value.map(i => ({
-    name: i,
-    classes: Object.values(data.value!.utilities)
-      .filter(u => u.category === i)
-      .map(i => i.full),
-  }))
+  return categories.value
+    .map(i => ({
+      name: i,
+      classes: Object.values(data.value!.utilities)
+        .filter(u => u.category === i)
+        .sort((a, b) => b.count - a.count)
+        .map(i => i.full),
+    }))
+    .sort((a, b) => b.classes.length - a.classes.length)
 })
