@@ -8,6 +8,7 @@ import { ApiMiddleware } from './middleware'
 
 export * from './middleware'
 export * from './analysis'
+export * from '../shared'
 
 export interface Options {
   port?: number
