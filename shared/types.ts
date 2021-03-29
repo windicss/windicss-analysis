@@ -9,6 +9,7 @@ export interface UtilityInfo {
   count: number
   full: string
   base: string
+  category?: string
   value?: string
   variants?: string[]
   important?: boolean
@@ -25,6 +26,8 @@ export interface BaseInfo {
 
 export interface AnalysisReport {
   root: string
+  name?: string
+  version?: string
   include: string[]
   exclude: string[]
   files: FileInfo[]

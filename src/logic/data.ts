@@ -1,6 +1,6 @@
 import { MaybeRef } from '@vueuse/core'
 import { computed, ref, unref } from 'vue'
-import { AnalysisReport } from '../../shared'
+import { AnalysisReport, uniq } from '../../shared'
 
 export const data = ref<AnalysisReport | null>()
 
@@ -23,3 +23,19 @@ export function getClassInfo(name: MaybeRef<string>) {
       .map(i => i.filepath) || [],
   }
 }
+
+export const categories = computed(() => {
+  if (!data.value)
+    return []
+  return uniq(Object.values(data.value.utilities).flatMap(u => u.category).filter(Boolean)) as string[]
+})
+
+export const categorized = computed(() => {
+  if (!data.value)
+    return {}
+
+  return categories.value.map(i => ({
+    name: i,
+    classes: Object.values(data.value!.utilities).filter(u => u.category === i).map(i => i.full),
+  }))
+})

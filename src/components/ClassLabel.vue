@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { defineProps, computed } from 'vue'
-import { getClassInfo } from '~/logic/data'
 
 const props = defineProps({
   name: {
@@ -10,16 +9,16 @@ const props = defineProps({
 })
 
 const url = computed(() => `/class?name=${encodeURIComponent(props.name)}`)
-const info = computed(() => getClassInfo(props.name))
+// const info = computed(() => getClassInfo(props.name))
 </script>
 
 <template>
   <RouterLink
     :to="url"
-    class="px-2 py-1 bg-gray-500 bg-opacity-10 hover:bg-opacity-20 font-mono rounded"
+    class="font-mono text-sm opacity-50 hover:(opacity-100 underline text-primary)"
   >
     <slot>
-      {{ props.name }} <span class="opacity-40 text-sm ">{{ info.count }}</span>
+      {{ props.name }}
     </slot>
   </RouterLink>
 </template>

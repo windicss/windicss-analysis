@@ -15,7 +15,7 @@ const props = defineProps({
       v-for="c in props.classes"
       :key="c"
       :name="c"
-      class="m-1"
+      class="mr-2"
     />
   </div>
 </template>
