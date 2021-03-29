@@ -1,6 +1,8 @@
 dependencies:
   '@windicss/plugin-utils': 0.11.0
   connect: 3.7.0
+  filesize: 6.1.0
+  gzip-size: 6.0.0
   open: 8.0.4
   serve-static: 1.14.1
 devDependencies:
@@ -1119,6 +1121,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-Ho16rzNMOFk2fPwChGh3D2D9OEHAfG19HgmRR2l+WLSsIstNsAYBzePH412bL0y5T44ejABIVfTHQ8nqi/tBCg==
+  /duplexer/0.1.2:
+    dev: false
+    resolution:
+      integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==
   /ee-first/1.1.1:
     dev: false
     resolution:
@@ -1642,6 +1648,12 @@ packages:
       node: ^10.12.0 || >=12.0.0
     resolution:
       integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==
+  /filesize/6.1.0:
+    dev: false
+    engines:
+      node: '>= 0.4.0'
+    resolution:
+      integrity: sha512-LpCHtPQ3sFx67z+uh2HnSyWSLLu5Jxo21795uRDuar/EOuYWXib5EmPaGIBuSnRqH2IODiKA2k5re/K9OnN/Yg==
   /fill-range/7.0.1:
     dependencies:
       to-regex-range: 5.0.1
@@ -1825,6 +1837,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-nTnJ528pbqxYanhpDYsi4Rd8MAeaBA67+RZ10CM1m3bTAVFEDcd5AuA4a6W5YkGZ1iNXHzZz8T6TBKLeBuNriQ==
+  /gzip-size/6.0.0:
+    dependencies:
+      duplexer: 0.1.2
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==
   /has-bigints/1.0.1:
     dev: true
     resolution:
@@ -3700,6 +3720,8 @@ specifiers:
   connect: ^3.7.0
   debug: ^4.3.2
   eslint: ^7.23.0
+  filesize: ^6.1.0
+  gzip-size: ^6.0.0
   open: ^8.0.4
   prism-theme-vars: ^0.2.2
   prismjs: ^1.23.0

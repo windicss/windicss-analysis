@@ -9,6 +9,7 @@ export interface UtilityInfo {
   count: number
   full: string
   base: string
+  type?: string
   category?: string
   value?: string
   variants?: string[]
@@ -34,4 +35,7 @@ export interface AnalysisReport {
   utilities: Record<string, UtilityInfo>
   bases: Record<string, BaseInfo>
   shortcuts: Record<string, Shortcut>
+  dist: {
+    gzip: string
+  }
 }

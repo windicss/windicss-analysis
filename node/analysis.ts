@@ -2,8 +2,8 @@ import { promises as fs, existsSync } from 'fs'
 import { join } from 'path'
 import { createUtils, UserOptions } from '@windicss/plugin-utils'
 import type { Shortcut } from 'windicss/types/interfaces'
-import { } from 'windicss/lib'
-import { countElement, AnalysisReport, FileInfo, UtilityInfo, BaseInfo } from '../shared'
+import gzipSize from 'gzip-size'
+import { countElement, AnalysisReport, FileInfo, UtilityInfo, BaseInfo, uniq } from '../shared'
 import { dynamicUtilities, staticUtilities } from './constants'
 
 const NAME = 'windicss-analysis'
@@ -26,7 +26,7 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
 
   const shortcuts: Record<string, Shortcut> = utils.processor.config('shortcuts') || {} as any
 
-  const utilityNames = utils.processor.interpret(files.flatMap(i => i.classes).join(' ')).success
+  const { success: utilityNames, styleSheet } = utils.processor.interpret(files.flatMap(i => i.classes).join(' '))
 
   files.forEach(i => i.classes = i.classes.filter(c => utilityNames.includes(c)))
 
@@ -48,7 +48,7 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
 
   const utilities = Object.fromEntries(utilitiesList.map(i => [i.full, i]))
 
-  const baseNames = utilitiesList.filter(u => u.base === u.full && !u.shortcut).map(u => u.base)
+  const baseNames = uniq(utilitiesList.map(u => u.base))
   const bases = Object.fromEntries(
     baseNames.map<[string, BaseInfo]>(i => [i, {
       count: utilitiesList.filter(u => u.base === i).reduce((a, b) => a.count + b.count, { count: 0 } as any),
@@ -56,6 +56,9 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
       variants: utilitiesList.filter(u => u.base === i).map(i => i.full),
     }]),
   )
+
+  const css = styleSheet.build()
+  const size = await gzipSize(css)
 
   const result: AnalysisReport = {
     root,
@@ -65,6 +68,9 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
     utilities,
     shortcuts,
     bases,
+    dist: {
+      gzip: size,
+    }
   }
 
   const packageJsonPath = join(root, 'package.json')
@@ -90,14 +96,19 @@ export function parseUtility(name: string): Partial<UtilityInfo> {
     name = variants.slice(-1)[0]
   }
   info.base = name
-  const [start] = (name.startsWith('-') ? name.slice(1) : name).split('-')
+  let [type] = (name.startsWith('-') ? name.slice(1) : name).split('-')
 
-  if (name in staticUtilities)
+  if (name in staticUtilities) {
     info.category = staticUtilities[name]
-  else if (start in dynamicUtilities)
-    info.category = dynamicUtilities[start]
-  else
+    type = name
+  }
+  else if (type in dynamicUtilities) {
+    info.category = dynamicUtilities[type]
+  }
+  else {
     info.category = 'unknown'
+  }
+  info.type = type
 
   return info
 }

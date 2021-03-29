@@ -6,6 +6,9 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  count: {
+    default: '',
+  },
 })
 </script>
 
@@ -15,6 +18,7 @@ const props = defineProps({
       v-for="c in props.classes"
       :key="c"
       :name="c"
+      :count="props.count"
       class="mr-2"
     />
   </div>

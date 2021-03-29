@@ -1,12 +1,23 @@
+<script setup lang="ts">
+import { name } from '~/logic'
+</script>
+
 <template>
-  <nav class="py-4 px-6 border-b duotone-border flex">
+  <nav class="container py-4 flex">
     <RouterLink class="flex" to="/">
-      <Logo class="text-2xl m-auto" />
-      <span class="ml-2 my-auto text-xl">Windi CSS Analyzer</span>
+      <Logo class="text-2xl m-auto -ml-1" />
+      <div class="ml-2 my-auto">
+        <div class="text-xl">
+          Windi CSS Analyzer
+        </div>
+        <div class="text-sm font-mono opacity-50">
+          {{ name }}
+        </div>
+      </div>
     </RouterLink>
 
     <div class="flex-auto"></div>
 
-    <DarkModeSwitch />
+    <DarkModeSwitch class="text-xl" />
   </nav>
 </template>

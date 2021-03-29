@@ -6,7 +6,8 @@ import { getClassInfo } from '~/logic/data'
 const route = useRoute()
 const name = computed(() => route.query.name as string || '')
 
-const { files, count } = getClassInfo(name)
+const info = getClassInfo(name)
+const { count, files } = info
 </script>
 
 <template>
@@ -20,6 +21,12 @@ const { files, count } = getClassInfo(name)
     <div class="subheader">
       {{ files.length }} Files
     </div>
-    <FileItem v-for="file of files" :key="file" :path="file" />
+    <FileItem
+      v-for="file of files"
+      :key="file"
+      :path="file"
+      class="block my-2"
+    />
+    <pre v-text="JSON.stringify(info, null, 2)"></pre>
   </div>
 </template>

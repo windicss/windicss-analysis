@@ -4,6 +4,7 @@ import { categorized } from '~/logic/data'
 
 <template>
   <div class="container">
+    <Overview />
     <div>Utilities Usage</div>
     <div
       v-for="{name, classes} of categorized"
