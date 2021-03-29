@@ -11,15 +11,15 @@ const props = defineProps({
 })
 
 const filepath = computed(() => props.path.startsWith(root.value) ? props.path.slice(root.value.length + 1) : props.path)
-const url = computed(() => `/file?path=${encodeURIComponent(props.path)}`)
+const url = computed(() => `vscode-insiders://file/${props.path}`)
 </script>
 
 <template>
-  <RouterLink
-    :to="url"
+  <a
+    :href="url"
     class="py-2 px-3 -mx-3 text-sm bg-gray-500 font-mono bg-opacity-0 hover:bg-opacity-10 rounded"
   >
     <FileIcon :type="getFileExt(filepath)" />
     <span class="opacity-50 ml-2 hover:opacity-100">{{ filepath }}</span>
-  </RouterLink>
+  </a>
 </template>
