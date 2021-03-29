@@ -1,6 +1,6 @@
 import { promises as fs, existsSync } from 'fs'
 import { join } from 'path'
-import { createUtils, UserOptions } from '@windicss/plugin-utils'
+import { createUtils, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
 import type { Shortcut } from 'windicss/types/interfaces'
 import gzipSize from 'gzip-size'
 import fileSize from 'filesize'
@@ -9,7 +9,12 @@ import { dynamicUtilities, staticUtilities } from './constants'
 
 const NAME = 'windicss-analysis'
 
-export async function runAnalysis(userOptions: UserOptions = {}): Promise<AnalysisReport> {
+export interface AnalysisReturn {
+  result: AnalysisReport
+  utils: WindiPluginUtils
+}
+
+export async function runAnalysis(userOptions: UserOptions = {}): Promise<AnalysisReturn> {
   const utils = createUtils(userOptions, { name: NAME })
   await utils.init()
 
@@ -58,7 +63,7 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
     }]),
   )
 
-  const css = styleSheet.build()
+  const css = styleSheet.build().replace(/[\s\n]+/gm, '')
   const size = await gzipSize(css)
 
   const result: AnalysisReport = {
@@ -81,7 +86,10 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
     result.version = version
   }
 
-  return result
+  return {
+    result,
+    utils,
+  }
 }
 
 export function parseUtility(name: string): Partial<UtilityInfo> {

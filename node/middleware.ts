@@ -1,10 +1,10 @@
 import { promises as fs, existsSync } from 'fs'
 import type Connect from 'connect'
 import { UserOptions } from 'vite-plugin-windicss'
-import { AnalysisReport, runAnalysis } from './analysis'
+import { AnalysisReturn, runAnalysis } from './analysis'
 
 const urlPrefix = '/api/'
-let analysisReport: AnalysisReport | undefined
+let analysisReturn: AnalysisReturn | undefined
 
 export function ApiMiddleware(windicssOptions: UserOptions = {}): Connect.NextHandleFunction {
   return async(req, res, next) => {
@@ -18,12 +18,19 @@ export function ApiMiddleware(windicssOptions: UserOptions = {}): Connect.NextHa
     // console.log(path, query)
 
     if (path === 'report.json') {
-      if (!analysisReport)
-        analysisReport = await runAnalysis(windicssOptions)
-      res.write(JSON.stringify(analysisReport))
+      if (!analysisReturn || query.has('force'))
+        analysisReturn = await runAnalysis(windicssOptions)
+      res.write(JSON.stringify(analysisReturn.result))
       return res.end()
     }
-    if (path === 'read') {
+    else if (path === 'interpret') {
+      if (!analysisReturn)
+        analysisReturn = await runAnalysis(windicssOptions)
+      const name = query.get('name') || ''
+      res.write(analysisReturn.utils.processor.interpret(name).styleSheet.build())
+      return res.end()
+    }
+    else if (path === 'read') {
       const filepath = query.get('path')
       if (!filepath || !existsSync(filepath)) {
         res.statusCode = 404

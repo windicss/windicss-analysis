@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "dev": "esno node/dev.ts",
-    "start": "esno node/index.ts",
+    "start": "esno node/cli.ts",
     "build": "rimraf dist && npm run build:app && npm run build:server",
     "build:app": "vite build",
     "build:server": "tsup node/index.ts node/cli.ts --dts --format cjs,esm",

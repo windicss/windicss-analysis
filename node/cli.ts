@@ -1,19 +1,23 @@
+import { resolve } from 'path'
 import cac from 'cac'
+import { version } from '../package.json'
 import { startServer } from './index'
 
 const cli = cac()
 
 cli
-  .option('--port <type>', 'Port', {
+  .option('--port <port>', 'Port', {
     default: 5432,
   })
   .option('--open', 'Open server in ', {
     default: true,
   })
+  .help()
+  .version(version)
 
 const parsed = cli.parse()
 
 startServer({
   ...parsed.options,
-  root: cli.args[0] || process.cwd(),
+  root: resolve(cli.args[0] || process.cwd()),
 })

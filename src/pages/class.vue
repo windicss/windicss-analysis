@@ -1,32 +1,50 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useFetch } from '@vueuse/core'
 import { getClassInfo } from '~/logic/data'
 
 const route = useRoute()
 const name = computed(() => route.query.name as string || '')
 
 const info = getClassInfo(name)
-const { count, files } = info
+
+const url = computed(() => `/api/interpret?name=${encodeURIComponent(name.value)}`)
+const { data: css } = useFetch(url).text()
 </script>
 
 <template>
   <div class="container">
-    <div class="font-mono text-3xl mb-4">
+    <BackHome />
+    <div class="px-2 py-1 font-mono text-3xl mb-4 bg-gray-400 bg-opacity-5 rounded inline-block">
       {{ name }}
     </div>
-    <div class="opacity-50 mb-6">
-      Usage count: {{ count }}
+    <div class="mb-6 grid grid-cols-2 w-14em">
+      <div class="opacity-50 text-sm my-auto">
+        Usage count
+      </div>
+      <div>{{ info.count }}</div>
+      <div class="opacity-50 text-sm my-auto">
+        Category
+      </div>
+      <div>{{ info.category }}</div>
     </div>
     <div class="subheader">
-      {{ files.length }} Files
+      CSS
     </div>
-    <FileItem
-      v-for="file of files"
-      :key="file"
-      :path="file"
-      class="block my-2"
-    />
-    <pre v-text="JSON.stringify(info, null, 2)"></pre>
+    <CodeBlock lang="css" :code="css" />
+    <br>
+    <div class="subheader">
+      Used in Files<sup class="ml-1 opacity-50">{{ info.files.length }}</sup>
+    </div>
+    <div>
+      <FileItem
+        v-for="file of info.files"
+        :key="file"
+        :path="file"
+        class="block"
+      />
+    </div>
+    <!-- <pre v-text="JSON.stringify(info, null, 2)"></pre> -->
   </div>
 </template>
