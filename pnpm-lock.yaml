@@ -1,5 +1,5 @@
 dependencies:
-  '@windicss/plugin-utils': 0.11.0
+  '@windicss/plugin-utils': 0.11.1
   cac: 6.7.2
   connect: 3.7.0
 devDependencies:
@@ -28,7 +28,7 @@ devDependencies:
   vite-plugin-components: 0.8.3_vite@2.1.3
   vite-plugin-icons: 0.4.0_@iconify+json@1.1.322
   vite-plugin-pages: 0.9.0_b54ad54627b171bd906b4d2481023ecc
-  vite-plugin-windicss: 0.11.0_vite@2.1.3
+  vite-plugin-windicss: 0.11.1_vite@2.1.3
   vue: 3.0.9
   vue-router: 4.0.5_vue@3.0.9
   windicss: 2.5.8
@@ -610,7 +610,7 @@ packages:
       vue: '*'
     resolution:
       integrity: sha512-niGuwfS9QjRhA44qopwczanH0u8TUgkgmUnTsOAz9a+iwGIxOK3ImpX1iCW7Dshqkz3YhPtmpycOrwF07s5jIQ==
-  /@windicss/plugin-utils/0.11.0:
+  /@windicss/plugin-utils/0.11.1:
     dependencies:
       debug: 4.3.2
       fast-glob: 3.2.5
@@ -620,7 +620,7 @@ packages:
       sucrase: 3.17.1
       windicss: 2.5.8
     resolution:
-      integrity: sha512-NIBJ7/wG8Ty///Qxktefud4OI18XjZkycW6DSkWV7++aYyZOdDgGRn493pU+5QZuXeXU8iNR6NKZDtFNcYD7kQ==
+      integrity: sha512-oQYDls+pgyF6EDSfqVboVhkAN9hIZ7VxaL/Cw1/9F3tvGHRgjuoQOjBsSVEoZkAfOBm27NOI4YnuRt+91KbC5w==
   /acorn-jsx/5.3.1_acorn@7.4.1:
     dependencies:
       acorn: 7.4.1
@@ -3532,9 +3532,9 @@ packages:
       vue-router: ^4.0.0
     resolution:
       integrity: sha512-7BxDOkY66udSi4ElBRnP8DnjDLYM6q/czJ1e/3Ok2Yzdgg+Wts6J6uX89SGdLboV8c/6iO6qFdSmBj3GxxIs3Q==
-  /vite-plugin-windicss/0.11.0_vite@2.1.3:
+  /vite-plugin-windicss/0.11.1_vite@2.1.3:
     dependencies:
-      '@windicss/plugin-utils': 0.11.0
+      '@windicss/plugin-utils': 0.11.1
       chalk: 4.1.0
       debug: 4.3.2
       vite: 2.1.3
@@ -3543,7 +3543,7 @@ packages:
     peerDependencies:
       vite: ^2.0.1
     resolution:
-      integrity: sha512-DSXomaGHXAXIF9zPk7T9KG8m1bMNNiIHpeoClX44qxNHT7ryI6iDI8gkWdNfYVjxjcoXSTxKqKa11MA+C7mmAA==
+      integrity: sha512-xukZzZzj6xiJTmHddYE8rrxniu4B8BCOMpU4mtTjsSiExCYyQ3xFpom6U6i36tRikRm0A3MEpsbHCxDk1wPSDg==
   /vite/2.1.3:
     dependencies:
       esbuild: 0.9.7
@@ -3710,7 +3710,7 @@ specifiers:
   '@vitejs/plugin-vue': ^1.2.0
   '@vueuse/core': ^4.6.2
   '@vueuse/router': ^4.6.2
-  '@windicss/plugin-utils': ^0.11.0
+  '@windicss/plugin-utils': ^0.11.1
   cac: ^6.7.2
   connect: ^3.7.0
   debug: ^4.3.2
@@ -3728,7 +3728,7 @@ specifiers:
   vite-plugin-components: ^0.8.3
   vite-plugin-icons: ^0.4.0
   vite-plugin-pages: ^0.9.0
-  vite-plugin-windicss: ^0.11.0
+  vite-plugin-windicss: ^0.11.1
   vue: ^3.0.9
   vue-router: 4.0.5
   windicss: ^2.5.8

@@ -35,7 +35,7 @@
     "release": "npx bumpp --push --tag --commit && npm publish"
   },
   "dependencies": {
-    "@windicss/plugin-utils": "^0.11.0",
+    "@windicss/plugin-utils": "^0.11.1",
     "cac": "^6.7.2",
     "connect": "^3.7.0"
   },
@@ -65,7 +65,7 @@
     "vite-plugin-components": "^0.8.3",
     "vite-plugin-icons": "^0.4.0",
     "vite-plugin-pages": "^0.9.0",
-    "vite-plugin-windicss": "^0.11.0",
+    "vite-plugin-windicss": "^0.11.1",
     "vue": "^3.0.9",
     "vue-router": "4.0.5",
     "windicss": "^2.5.8"

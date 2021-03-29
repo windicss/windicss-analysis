@@ -4,5 +4,6 @@
     <TopUtilities />
     <ColorPalette />
     <UtilitiesUsage />
+    <PreferencesPanel />
   </div>
 </template>

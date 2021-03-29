@@ -2,6 +2,7 @@
 import { defineProps, computed } from 'vue'
 import { getFileExt } from '@shared'
 import { root } from '~/logic'
+import { editor } from '~/logic/preferences'
 
 const props = defineProps({
   path: {
@@ -11,7 +12,7 @@ const props = defineProps({
 })
 
 const filepath = computed(() => props.path.startsWith(root.value) ? props.path.slice(root.value.length + 1) : props.path)
-const url = computed(() => `vscode-insiders://file/${props.path}`)
+const url = computed(() => `${editor.value}://file/${props.path}`)
 </script>
 
 <template>
