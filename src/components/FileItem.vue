@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineProps, computed } from 'vue'
+import { getFileExt } from '@shared'
 import { root } from '~/logic'
 
 const props = defineProps({
@@ -18,8 +19,7 @@ const url = computed(() => `/file?path=${encodeURIComponent(props.path)}`)
     :to="url"
     class="py-2 px-3 -mx-3 text-sm bg-gray-500 font-mono bg-opacity-0 hover:bg-opacity-10 rounded"
   >
-    <slot>
-      {{ filepath }}
-    </slot>
+    <FileIcon :type="getFileExt(filepath)" />
+    <span class="opacity-50 ml-2 hover:opacity-100">{{ filepath }}</span>
   </RouterLink>
 </template>
