@@ -15,7 +15,7 @@ html.dark {
 
 :root {
   --prism-font-size: 14px;
-  --prism-font-family: 'Input Mono', monospace;
+  --prism-font-family: 'Fira Code', monospace;
 }
 
 html:not(.dark) {

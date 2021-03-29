@@ -9,6 +9,9 @@ export default defineConfig({
   },
   theme: {
     extend: {
+      fontFamily: {
+        mono: '"Fira Code", monospace',
+      },
       colors: {
         primary: (colors.lightBlue as any)['400'],
       },
