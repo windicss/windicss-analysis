@@ -1,11 +1,12 @@
 import { promises as fs, existsSync } from 'fs'
 import type Connect from 'connect'
+import { UserOptions } from 'vite-plugin-windicss'
 import { AnalysisReport, runAnalysis } from './analysis'
 
 const urlPrefix = '/api/'
 let analysisReport: AnalysisReport | undefined
 
-export function ApiMiddleware(): Connect.NextHandleFunction {
+export function ApiMiddleware(windicssOptions: UserOptions = {}): Connect.NextHandleFunction {
   return async(req, res, next) => {
     if (!req.url?.startsWith(urlPrefix))
       return next()
@@ -18,7 +19,7 @@ export function ApiMiddleware(): Connect.NextHandleFunction {
 
     if (path === 'report.json') {
       if (!analysisReport)
-        analysisReport = await runAnalysis()
+        analysisReport = await runAnalysis(windicssOptions)
       res.write(JSON.stringify(analysisReport))
       return res.end()
     }

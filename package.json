@@ -31,7 +31,8 @@
     "build": "rimraf dist && npm run build:app && npm run build:server",
     "build:app": "vite build",
     "build:server": "tsup node/index.ts node/cli.ts --dts --format cjs,esm",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "release": "npx bumpp --push --tag --commit && npm publish"
   },
   "dependencies": {
     "@windicss/plugin-utils": "^0.11.0",
