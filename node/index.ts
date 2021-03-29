@@ -3,6 +3,7 @@ import { resolve } from 'path'
 import connect from 'connect'
 import openUrl from 'open'
 import serveStatic from 'serve-static'
+import { tryPort } from 'shared'
 import { ApiMiddleware } from './middleware'
 
 export * from './middleware'
@@ -14,13 +15,13 @@ export interface Options {
   root?: string
 }
 
-export function startServer(options: Options = {}) {
+export async function startServer(options: Options = {}) {
   const {
-    port = 5432,
     open = true,
     root = process.cwd(),
   } = options
 
+  const port = await tryPort(options.port || 8113)
   const app = connect()
   const url = `http://localhost:${port}`
 

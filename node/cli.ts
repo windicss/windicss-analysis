@@ -7,7 +7,7 @@ const cli = cac()
 
 cli
   .option('--port <port>', 'Port', {
-    default: 5432,
+    default: 8113,
   })
   .option('--open', 'Open server in ', {
     default: true,
