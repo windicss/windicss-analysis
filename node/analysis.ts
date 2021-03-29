@@ -3,6 +3,7 @@ import { join } from 'path'
 import { createUtils, UserOptions } from '@windicss/plugin-utils'
 import type { Shortcut } from 'windicss/types/interfaces'
 import gzipSize from 'gzip-size'
+import fileSize from 'filesize'
 import { countElement, AnalysisReport, FileInfo, UtilityInfo, BaseInfo, uniq } from '../shared'
 import { dynamicUtilities, staticUtilities } from './constants'
 
@@ -69,8 +70,8 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
     shortcuts,
     bases,
     dist: {
-      gzip: size,
-    }
+      gzip: fileSize(size),
+    },
   }
 
   const packageJsonPath = join(root, 'package.json')

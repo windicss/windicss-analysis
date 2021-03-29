@@ -35,11 +35,8 @@
   },
   "dependencies": {
     "@windicss/plugin-utils": "^0.11.0",
-    "connect": "^3.7.0",
-    "filesize": "^6.1.0",
-    "gzip-size": "^6.0.0",
-    "open": "^8.0.4",
-    "serve-static": "^1.14.1"
+    "cac": "^6.7.2",
+    "connect": "^3.7.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.6.2",
@@ -54,9 +51,13 @@
     "@vueuse/router": "^4.6.2",
     "debug": "^4.3.2",
     "eslint": "^7.23.0",
+    "filesize": "^6.1.0",
+    "gzip-size": "^6.0.0",
+    "open": "^8.0.4",
     "prism-theme-vars": "^0.2.2",
     "prismjs": "^1.23.0",
     "rimraf": "^3.0.2",
+    "serve-static": "^1.14.1",
     "tsup": "^4.8.21",
     "typescript": "^4.2.3",
     "vite": "^2.1.3",

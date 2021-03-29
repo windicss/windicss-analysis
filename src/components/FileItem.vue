@@ -16,7 +16,7 @@ const url = computed(() => `/file?path=${encodeURIComponent(props.path)}`)
 <template>
   <RouterLink
     :to="url"
-    class="px-2 py-1 bg-gray-500 bg-opacity-10 hover:bg-opacity-20 rounded"
+    class="px-2 py-2 -my-2 bg-gray-500 font-mono bg-opacity-10 hover:bg-opacity-20 rounded"
   >
     <slot>
       {{ filepath }}

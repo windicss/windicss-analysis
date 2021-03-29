@@ -10,12 +10,14 @@ export * from './analysis'
 
 export function startServer(port = 5432) {
   const app = connect()
+  const url = `http://localhost:${port}`
 
   app.use(ApiMiddleware())
   app.use(serveStatic(resolve(__dirname, '../dist/app')))
 
   http.createServer(app).listen(port)
 
-  open(`http://localhost:${port}`)
+  open(url)
+  console.log(`Windi Analyser started at ${url}`)
   return app
 }

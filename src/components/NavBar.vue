@@ -8,7 +8,7 @@ import { name } from '~/logic'
       <Logo class="text-2xl m-auto -ml-1" />
       <div class="ml-2 my-auto">
         <div class="text-xl">
-          Windi CSS Analyzer
+          Windi Analyzer
         </div>
         <div class="text-sm font-mono opacity-50">
           {{ name }}
@@ -18,6 +18,13 @@ import { name } from '~/logic'
 
     <div class="flex-auto"></div>
 
+    <a
+      class="!outline-none opacity-50 hover:opacity-75 inline-block text-xl mr-4 my-auto"
+      href="https://github.com/windicss/windicss-analysis"
+      target="_blank"
+    >
+      <carbon-logo-github />
+    </a>
     <DarkModeSwitch class="text-xl" />
   </nav>
 </template>

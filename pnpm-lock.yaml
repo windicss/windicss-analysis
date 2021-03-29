@@ -1,10 +1,7 @@
 dependencies:
   '@windicss/plugin-utils': 0.11.0
+  cac: 6.7.2
   connect: 3.7.0
-  filesize: 6.1.0
-  gzip-size: 6.0.0
-  open: 8.0.4
-  serve-static: 1.14.1
 devDependencies:
   '@antfu/eslint-config': 0.6.2_eslint@7.23.0+typescript@4.2.3
   '@antfu/ni': 0.5.5
@@ -18,9 +15,13 @@ devDependencies:
   '@vueuse/router': 4.6.2_vue-router@4.0.5+vue@3.0.9
   debug: 4.3.2
   eslint: 7.23.0
+  filesize: 6.1.0
+  gzip-size: 6.0.0
+  open: 8.0.4
   prism-theme-vars: 0.2.2
   prismjs: 1.23.0
   rimraf: 3.0.2
+  serve-static: 1.14.1
   tsup: 4.8.21_typescript@4.2.3
   typescript: 4.2.3
   vite: 2.1.3
@@ -808,7 +809,6 @@ packages:
     resolution:
       integrity: sha512-vIyhWmIkULaq04Gt93txdh+j02yX/JzlyhLYbV3YQCn/zvES3JnY7TifHHvvr1w5hTDluNKMkV05cs4vy8Q7sw==
   /cac/6.7.2:
-    dev: true
     engines:
       node: '>=8'
     resolution:
@@ -1026,7 +1026,7 @@ packages:
     resolution:
       integrity: sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
   /define-lazy-prop/2.0.0:
-    dev: false
+    dev: true
     engines:
       node: '>=8'
     resolution:
@@ -1045,13 +1045,13 @@ packages:
     resolution:
       integrity: sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==
   /depd/1.1.2:
-    dev: false
+    dev: true
     engines:
       node: '>= 0.6'
     resolution:
       integrity: sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
   /destroy/1.0.4:
-    dev: false
+    dev: true
     resolution:
       integrity: sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
   /dir-glob/3.0.1:
@@ -1122,11 +1122,10 @@ packages:
     resolution:
       integrity: sha512-Ho16rzNMOFk2fPwChGh3D2D9OEHAfG19HgmRR2l+WLSsIstNsAYBzePH412bL0y5T44ejABIVfTHQ8nqi/tBCg==
   /duplexer/0.1.2:
-    dev: false
+    dev: true
     resolution:
       integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==
   /ee-first/1.1.1:
-    dev: false
     resolution:
       integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
   /electron-to-chromium/1.3.701:
@@ -1144,7 +1143,6 @@ packages:
     resolution:
       integrity: sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
   /encodeurl/1.0.2:
-    dev: false
     engines:
       node: '>= 0.8'
     resolution:
@@ -1232,7 +1230,6 @@ packages:
     resolution:
       integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
   /escape-html/1.0.3:
-    dev: false
     resolution:
       integrity: sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
   /escape-string-regexp/1.0.5:
@@ -1590,7 +1587,7 @@ packages:
     resolution:
       integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
   /etag/1.8.1:
-    dev: false
+    dev: true
     engines:
       node: '>= 0.6'
     resolution:
@@ -1649,7 +1646,7 @@ packages:
     resolution:
       integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==
   /filesize/6.1.0:
-    dev: false
+    dev: true
     engines:
       node: '>= 0.4.0'
     resolution:
@@ -1719,7 +1716,7 @@ packages:
     resolution:
       integrity: sha1-C+4AUBiusmDQo6865ljdATbsG5k=
   /fresh/0.5.2:
-    dev: false
+    dev: true
     engines:
       node: '>= 0.6'
     resolution:
@@ -1840,7 +1837,7 @@ packages:
   /gzip-size/6.0.0:
     dependencies:
       duplexer: 0.1.2
-    dev: false
+    dev: true
     engines:
       node: '>=10'
     resolution:
@@ -1899,7 +1896,7 @@ packages:
       setprototypeof: 1.1.1
       statuses: 1.5.0
       toidentifier: 1.0.0
-    dev: false
+    dev: true
     engines:
       node: '>= 0.6'
     resolution:
@@ -2053,7 +2050,7 @@ packages:
     resolution:
       integrity: sha512-USlDT524woQ08aoZFzh3/Z6ch9Y/EWXEHQ/AaRN0SkKq4t2Jw2R2339tSXmwuVoY7LLlBCbOIlx2myP/L5zk0g==
   /is-docker/2.1.1:
-    dev: false
+    dev: true
     engines:
       node: '>=8'
     hasBin: true
@@ -2154,7 +2151,7 @@ packages:
   /is-wsl/2.2.0:
     dependencies:
       is-docker: 2.1.1
-    dev: false
+    dev: true
     engines:
       node: '>=8'
     resolution:
@@ -2379,7 +2376,7 @@ packages:
     resolution:
       integrity: sha512-y7FpHSbMUMoyPbYUSzO6PaZ6FyRnQOpHuKwbo1G+Knck95XVU4QAiKdGEnj5wwoS7PlOgthX/09u5iFJ+aYf5Q==
   /mime/1.6.0:
-    dev: false
+    dev: true
     engines:
       node: '>=4'
     hasBin: true
@@ -2404,7 +2401,7 @@ packages:
     resolution:
       integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
   /ms/2.1.1:
-    dev: false
+    dev: true
     resolution:
       integrity: sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
   /ms/2.1.2:
@@ -2535,7 +2532,6 @@ packages:
   /on-finished/2.3.0:
     dependencies:
       ee-first: 1.1.1
-    dev: false
     engines:
       node: '>= 0.8'
     resolution:
@@ -2558,7 +2554,7 @@ packages:
       define-lazy-prop: 2.0.0
       is-docker: 2.1.1
       is-wsl: 2.2.0
-    dev: false
+    dev: true
     engines:
       node: '>=12'
     resolution:
@@ -2664,7 +2660,6 @@ packages:
     resolution:
       integrity: sha512-ayCKvm/phCGxOkYRSCM82iDwct8/EonSEgCSxWxD7ve6jHggsFl4fZVQBPRNgQoKiuV/odhFrGzQXZwbifC8Rg==
   /parseurl/1.3.3:
-    dev: false
     engines:
       node: '>= 0.8'
     resolution:
@@ -2886,7 +2881,7 @@ packages:
     resolution:
       integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
   /range-parser/1.2.1:
-    dev: false
+    dev: true
     engines:
       node: '>= 0.6'
     resolution:
@@ -3075,7 +3070,7 @@ packages:
       on-finished: 2.3.0
       range-parser: 1.2.1
       statuses: 1.5.0
-    dev: false
+    dev: true
     engines:
       node: '>= 0.8.0'
     resolution:
@@ -3086,13 +3081,13 @@ packages:
       escape-html: 1.0.3
       parseurl: 1.3.3
       send: 0.17.1
-    dev: false
+    dev: true
     engines:
       node: '>= 0.8.0'
     resolution:
       integrity: sha512-JMrvUwE54emCYWlTI+hGrGv5I8dEwmco/00EvkzIIsR7MqrHonbD9pO2MOfFnpFntl7ecpZs+3mW+XbQZu9QCg==
   /setprototypeof/1.1.1:
-    dev: false
+    dev: true
     resolution:
       integrity: sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
   /shebang-command/2.0.0:
@@ -3183,7 +3178,6 @@ packages:
     resolution:
       integrity: sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
   /statuses/1.5.0:
-    dev: false
     engines:
       node: '>= 0.6'
     resolution:
@@ -3352,7 +3346,7 @@ packages:
     resolution:
       integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   /toidentifier/1.0.0:
-    dev: false
+    dev: true
     engines:
       node: '>=0.6'
     resolution:
@@ -3717,6 +3711,7 @@ specifiers:
   '@vueuse/core': ^4.6.2
   '@vueuse/router': ^4.6.2
   '@windicss/plugin-utils': ^0.11.0
+  cac: ^6.7.2
   connect: ^3.7.0
   debug: ^4.3.2
   eslint: ^7.23.0

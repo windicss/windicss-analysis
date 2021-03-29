@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import { topUtilities } from '~/logic'
+import { classes, data, files } from '~/logic'
 </script>
 
 <template>
   <div class="mb-5">
-    Top 10
-    <ClassesList :classes="topUtilities" count="baseCount" />
+    <div class="text-center mb-10">
+      <span class="text-2xl">{{ classes.length }}</span>
+      <span class="opacity-50 mx-1">utilities used in</span>
+      <span class="text-xl">{{ files.length }}</span>
+      <span class="opacity-50 mx-1">files</span>
+      <br>
+      <span class="opacity-50 mx-1">with</span>
+      <span class="text-xl">{{ data?.dist.gzip }}</span>
+      <span class="opacity-50 mx-1">coresponding CSS genreated (min+gzip)</span>
+    </div>
   </div>
 </template>

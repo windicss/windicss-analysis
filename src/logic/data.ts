@@ -1,5 +1,5 @@
 import { MaybeRef } from '@vueuse/core'
-import { computed, ref, unref, version } from 'vue'
+import { computed, ref, unref } from 'vue'
 import { AnalysisReport, uniq } from '../../shared'
 
 export const data = ref<AnalysisReport | null>()
@@ -13,7 +13,7 @@ export async function fetchData() {
 export const name = computed(() => {
   let name = data.value?.name
   if (name && data.value?.version)
-    name += `@${version}`
+    name += `@${data.value?.version}`
   if (!name)
     name = data.value?.root
   return name
