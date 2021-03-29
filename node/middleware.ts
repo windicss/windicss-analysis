@@ -1,5 +1,5 @@
 import { promises as fs, existsSync } from 'fs'
-import type { Connect } from 'vite'
+import type Connect from 'connect'
 import { AnalysisReport, runAnalysis } from './analysis'
 
 const urlPrefix = '/api/'

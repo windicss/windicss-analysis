@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs'
 import { createUtils, UserOptions } from '@windicss/plugin-utils'
-import { AnalysisReport, FileInfo } from '../shared/types'
+import type { Shortcut } from 'windicss/types/interfaces'
+import { countElement, AnalysisReport, FileInfo, UtilityInfo, BaseInfo } from '../shared'
 
 const NAME = 'windicss-analysis'
 
@@ -19,21 +20,59 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
     })
   }
 
-  const { success } = utils.processor.interpret(files.flatMap(i => i.classes).join(' '))
+  const shortcuts: Record<string, Shortcut> = utils.processor.config('shortcuts') || {} as any
 
-  files.forEach(i => i.classes = i.classes.filter(c => success.includes(c)))
+  const utilityNames = utils.processor.interpret(files.flatMap(i => i.classes).join(' ')).success
+
+  files.forEach(i => i.classes = i.classes.filter(c => utilityNames.includes(c)))
+
+  const allUsages = files.flatMap(i => i.classes)
+
+  const utilitiesList = utilityNames.map<UtilityInfo>(i => ({
+    count: countElement(allUsages, i),
+    base: i,
+    full: i,
+    ...parseUtility(i),
+    shortcut: shortcuts[i],
+  }))
+
+  const utilities = Object.fromEntries(utilitiesList.map(i => [i.full, i]))
+
+  const baseNames = utilitiesList.filter(u => u.base === u.full && !u.shortcut).map(u => u.base)
+  const bases = Object.fromEntries(
+    baseNames.map<[string, BaseInfo]>(i => [i, {
+      count: utilitiesList.filter(u => u.base === i).reduce((a, b) => a.count + b.count, { count: 0 } as any),
+      base: i,
+      variants: utilitiesList.filter(u => u.base === i).map(i => i.full),
+    }]),
+  )
 
   return {
     root: utils.options.root,
     include: utils.options.scanOptions.include,
     exclude: utils.options.scanOptions.exclude,
     files,
+    utilities,
+    shortcuts,
+    bases,
   }
 }
 
-// runAnalysis()
-//   .then((data) => {
-//     fs.writeFile('public/output.json', JSON.stringify(data, null, 2), 'utf-8')
-//   })
+export function parseUtility(name: string): Partial<UtilityInfo> {
+  const info: Partial<UtilityInfo> = { }
+
+  if (name[0] === '!') {
+    info.important = true
+    name = name.slice(1)
+  }
+  if (name.includes(':')) {
+    const variants = name.split(/:/g)
+    info.variants = variants.slice(0, -1)
+    name = variants.slice(-1)[0]
+  }
+  info.base = name
+
+  return info
+}
 
 export * from '../shared/types'

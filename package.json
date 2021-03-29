@@ -1,7 +1,7 @@
 {
   "name": "windicss-analysis",
   "description": "Analyser for Windi CSS",
-  "version": "0.10.4",
+  "version": "0.0.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -17,14 +17,18 @@
   "files": [
     "dist"
   ],
+  "bin": {
+    "windicss-analysis": "bin/windicss-analysis.js"
+  },
   "keywords": [
     "windicss",
-    "tailwindcss"
+    "tailwindcss",
+    "analysis"
   ],
   "scripts": {
     "dev": "esno node/dev.ts",
     "start": "esno node/index.ts",
-    "build": "npm run build:app && npm run build:server",
+    "build": "rimraf dist && npm run build:app && npm run build:server",
     "build:app": "vite build",
     "build:server": "tsup node/index.ts node/cli.ts --dts --format cjs,esm",
     "prepublishOnly": "npm run build"
@@ -50,6 +54,7 @@
     "eslint": "^7.23.0",
     "prism-theme-vars": "^0.2.2",
     "prismjs": "^1.23.0",
+    "rimraf": "^3.0.2",
     "tsup": "^4.8.21",
     "typescript": "^4.2.3",
     "vite": "^2.1.3",
