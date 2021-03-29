@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useFetch } from '@vueuse/core'
-import { getClassInfo } from '~/logic/data'
+import { getClassInfo } from '~/logic'
 
 const route = useRoute()
 const name = computed(() => route.query.name as string || '')

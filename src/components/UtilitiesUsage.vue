@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { categorized } from '~/logic/data'
+import { categorized } from '~/logic'
 </script>
 
 <template>

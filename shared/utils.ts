@@ -35,3 +35,7 @@ export async function tryPort(start = 4000): Promise<number> {
     return start
   return tryPort(start + 1)
 }
+
+export function getFileExt(path: string) {
+  return path.slice(path.lastIndexOf('.') + 1).toLowerCase()
+}

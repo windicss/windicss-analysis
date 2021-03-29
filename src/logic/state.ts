@@ -1,6 +1,6 @@
 import { MaybeRef } from '@vueuse/core'
 import { computed, ref, unref } from 'vue'
-import { AnalysisReport, uniq } from '../../shared'
+import { AnalysisReport, uniq } from '@shared'
 
 export const data = ref<AnalysisReport | null>()
 

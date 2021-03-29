@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, defineProps } from 'vue'
 import { useFetch } from '@vueuse/core'
+import { getFileExt } from '@shared'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-typescript'
@@ -18,7 +19,7 @@ const url = computed(() => `/api/read?path=${encodeURIComponent(props.filepath)}
 const { data } = useFetch<string>(url)
 
 const lang = computed(() => {
-  const ext = props.filepath.slice(props.filepath.lastIndexOf('.') + 1).toLowerCase()
+  const ext = getFileExt(props.filepath)
   switch (ext) {
     case 'js':
     case 'jsx':

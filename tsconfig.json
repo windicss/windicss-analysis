@@ -13,7 +13,8 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "@shared": ["shared/index.ts"]
     }
   },
   "exclude": ["dist", "node_modules"]

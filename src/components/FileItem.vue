@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, computed } from 'vue'
-import { root } from '~/logic/data'
+import { root } from '~/logic'
 
 const props = defineProps({
   path: {
