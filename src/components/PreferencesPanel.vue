@@ -17,5 +17,9 @@ import { editor } from '~/logic/preferences'
         { value: 'vscode-insiders', display: 'VS Code Insiders' },
       ]"
     />
+    <div class="subheader my-2">
+      Reload
+    </div>
+    <ReloadButton />
   </div>
 </template>

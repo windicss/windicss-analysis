@@ -21,15 +21,14 @@ import { name } from '~/logic'
 
     <SearchModal />
     <div class="flex gap-4">
-      <a
+      <!-- <a
         class="icon-button"
         href="https://github.com/windicss/windicss-analysis"
         target="_blank"
       >
-        <carbon-logo-github class="text-xl" />
-      </a>
+        <carbon-logo-github />
+      </a> -->
       <SearchButton />
-      <ReloadButton />
       <PreferencesButton />
       <DarkModeSwitch />
     </div>

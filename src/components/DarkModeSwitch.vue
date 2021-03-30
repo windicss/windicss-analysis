@@ -1,7 +1,7 @@
 <template>
-  <button class="!outline-none opacity-50 hover:opacity-75" aria-label="Toggle dark mode" @click="toggle">
-    <carbon-moon v-show="isDark" class="text-xl" />
-    <carbon-sun v-show="!isDark" class="text-xl" />
+  <button class="!outline-none opacity-40 hover:opacity-75" aria-label="Toggle dark mode" @click="toggle">
+    <carbon-moon v-show="isDark" class="text" />
+    <carbon-sun v-show="!isDark" class="text" />
   </button>
 </template>
 

@@ -10,9 +10,10 @@ function reload() {
   <button
     v-if="!isServerless"
     title="Reload"
-    class="icon-button"
+    class="button text-sm"
     @click="reload"
   >
-    <carbon-renew class="text-xl" />
+    <carbon-renew class="mr-1 text-sm opacity-50" />
+    <span>Re-analysis</span>
   </button>
 </template>

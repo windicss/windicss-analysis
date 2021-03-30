@@ -9,6 +9,6 @@ import { searchEnabled } from '~/logic'
     class="icon-button"
     @click="searchEnabled = true"
   >
-    <carbon-search class="text-xl" />
+    <carbon-search />
   </button>
 </template>

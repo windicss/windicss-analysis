@@ -15,7 +15,7 @@ onClickOutside(panel, () => {
     class="my-auto inline-block relative !outline-none"
   >
     <carbon-settings-adjust
-      class="text-xl opacity-50 hover:opacity-75"
+      class="opacity-40 hover:opacity-75"
       @click="showPreferences = !showPreferences"
     />
     <div
