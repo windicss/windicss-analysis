@@ -37,7 +37,7 @@ export const colors = computed(() => {
 export const root = computed(() => data.value?.root || '')
 export const fullUtilities = computed(() => data.value?.files.flatMap(i => i.utilities) || [])
 export const utilities = computed(() => Object.keys(data.value?.utilities || {}).sort())
-export const files = computed(() => data.value?.files.map(i => i.filepath) || [])
+export const files = computed(() => data.value?.files.filter(i => i.utilities.length).map(i => i.filepath) || [])
 
 export function getUtilityInfo(name: MaybeRef<string>) {
   const utility = data.value?.utilities[unref(name)]

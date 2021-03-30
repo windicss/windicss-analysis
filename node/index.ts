@@ -3,7 +3,9 @@ import { resolve } from 'path'
 import connect from 'connect'
 import openUrl from 'open'
 import serveStatic from 'serve-static'
+import { cyan, yellow } from 'chalk'
 import { tryPort } from '../shared'
+import { version } from '../package.json'
 import { ApiMiddleware } from './middleware'
 
 export * from './middleware'
@@ -35,6 +37,8 @@ export async function startServer(options: Options = {}) {
 
   if (open)
     openUrl(url)
-  console.log(`Windi Analyser started at ${url}`)
+
+  console.log(`${cyan`Windi Analyser`} v${version} started at ${yellow(url)}`)
+
   return app
 }

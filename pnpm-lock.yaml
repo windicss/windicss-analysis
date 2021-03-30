@@ -13,6 +13,7 @@ devDependencies:
   '@vitejs/plugin-vue': 1.2.0
   '@vueuse/core': 4.6.2_vue@3.0.9
   '@vueuse/router': 4.6.2_vue-router@4.0.5+vue@3.0.9
+  chalk: 4.1.0
   debug: 4.3.2
   eslint: 7.23.0
   filesize: 6.1.0
@@ -3732,6 +3733,7 @@ specifiers:
   '@vueuse/router': ^4.6.2
   '@windicss/plugin-utils': ^0.11.2
   cac: ^6.7.2
+  chalk: ^4.1.0
   connect: ^3.7.0
   debug: ^4.3.2
   eslint: ^7.23.0

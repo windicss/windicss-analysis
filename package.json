@@ -50,6 +50,7 @@
     "@vitejs/plugin-vue": "^1.2.0",
     "@vueuse/core": "^4.6.2",
     "@vueuse/router": "^4.6.2",
+    "chalk": "^4.1.0",
     "debug": "^4.3.2",
     "eslint": "^7.23.0",
     "filesize": "^6.1.0",
