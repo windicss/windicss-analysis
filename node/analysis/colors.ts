@@ -13,6 +13,8 @@ export function parseColor(
       .replace(/^\w+-/, '')
     if (body in colors) {
       color = colors[body] as string
+      if (Array.isArray(color))
+        color = color[0]
       name = body
     }
     else if (body.startsWith('hex-')) {

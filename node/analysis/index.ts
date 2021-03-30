@@ -59,10 +59,20 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
   const css = styleSheet.build().replace(/[\s\n]+/gm, '')
   const size = await gzipSize(css)
 
+  const colors = Object.fromEntries(
+    uniq(utilitiesList.map(u => u.colorName).filter(i => i))
+      .map(i => [i, {
+        name: i,
+        hex: utilitiesList.find(u => u.colorName === i)?.colorHex,
+        utilities: utilitiesList.filter(u => u.colorName === i).map(i => i.full),
+      }]),
+  )
+
   const result: AnalysisReport = {
     root,
     include: utils.options.scanOptions.include,
     exclude: utils.options.scanOptions.exclude,
+    colors,
     files,
     utilities,
     shortcuts,

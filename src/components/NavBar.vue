@@ -19,14 +19,16 @@ import { name } from '~/logic'
 
     <div class="flex-auto"></div>
 
-    <PreferencesButton />
-    <a
-      class="!outline-none opacity-50 hover:opacity-75 inline-block text-xl mr-4 my-auto"
-      href="https://github.com/windicss/windicss-analysis"
-      target="_blank"
-    >
-      <carbon-logo-github />
-    </a>
-    <DarkModeSwitch class="text-xl" />
+    <div class="flex gap-4">
+      <a
+        class="!outline-none opacity-50 hover:opacity-75 inline-block text-xl my-auto"
+        href="https://github.com/windicss/windicss-analysis"
+        target="_blank"
+      >
+        <carbon-logo-github />
+      </a>
+      <PreferencesButton />
+      <DarkModeSwitch />
+    </div>
   </nav>
 </template>

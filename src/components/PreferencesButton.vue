@@ -12,9 +12,9 @@ onClickOutside(panel, () => {
 <template>
   <button
     ref="panel"
-    class="my-auto mr-4 inline-block relative !outline-none"
+    class="my-auto inline-block relative !outline-none"
   >
-    <carbon-settings
+    <carbon-settings-adjust
       class="text-xl opacity-50 hover:opacity-75"
       @click="showPreferences = !showPreferences"
     />

@@ -26,6 +26,12 @@ export const name = computed(() => {
   return name
 })
 
+export const colors = computed(() => {
+  return Object.values(data.value?.colors || {})
+    .sort((a, b) => b.utilities.length - a.utilities.length)
+    .filter(i => i.name !== 'transparent')
+})
+
 export const root = computed(() => data.value?.root || '')
 export const fullClasses = computed(() => data.value?.files.flatMap(i => i.classes) || [])
 export const classes = computed(() => Object.keys(data.value?.utilities || {}).sort())

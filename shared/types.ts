@@ -25,6 +25,12 @@ export interface BaseInfo {
   variants?: string[]
 }
 
+export interface ColorInfo {
+  name: string
+  hex: string
+  utilities: string[]
+}
+
 export interface AnalysisReport {
   root: string
   name?: string
@@ -32,6 +38,7 @@ export interface AnalysisReport {
   include: string[]
   exclude: string[]
   files: FileInfo[]
+  colors: Record<string, ColorInfo>
   utilities: Record<string, UtilityInfo>
   bases: Record<string, BaseInfo>
   shortcuts: Record<string, Shortcut>
