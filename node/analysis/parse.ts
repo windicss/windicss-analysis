@@ -25,20 +25,19 @@ export function parseUtility(name: string, processor: Processor): Partial<Utilit
 
   const [type] = (name.startsWith('-') ? name.slice(1) : name).split('-')
 
-  if (name.includes('$')) {
-    info.category = staticUtilities[name]
-    info.type = 'variable'
+  if (!info.category) {
+    if (name.includes('$')) {
+      info.category = 'variable'
+    }
+    else if (name in staticUtilities) {
+      info.category = staticUtilities[name]
+      info.type = type
+    }
+    else if (type in dynamicUtilities) {
+      info.category = dynamicUtilities[type]
+    }
   }
-  else if (name in staticUtilities) {
-    info.category = staticUtilities[name]
-    info.type = type
-  }
-  else if (type in dynamicUtilities) {
-    info.category = dynamicUtilities[type]
-  }
-  else {
-    info.category = 'unknown'
-  }
+  info.category = info.category || 'unknown'
   info.type = info.type || type
 
   const color = parseColor(info.base, processor.theme('colors'))

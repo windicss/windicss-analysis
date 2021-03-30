@@ -21,12 +21,13 @@ import { name } from '~/logic'
 
     <div class="flex gap-4">
       <a
-        class="!outline-none opacity-50 hover:opacity-75 inline-block text-xl my-auto"
+        class="icon-button"
         href="https://github.com/windicss/windicss-analysis"
         target="_blank"
       >
-        <carbon-logo-github />
+        <carbon-logo-github class="text-xl" />
       </a>
+      <ReloadButton />
       <PreferencesButton />
       <DarkModeSwitch />
     </div>
