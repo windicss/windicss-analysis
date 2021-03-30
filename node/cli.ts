@@ -14,7 +14,7 @@ cli
   .option('--port <port>', 'Port', { default: 8113 })
   .option('--open', 'Open in browser', { default: true })
   .option('--json [filepath]', 'Output analysis result file in JSON')
-  .option('--html [dir]', 'Output analysis result in static web app', { default: false })
+  .option('--html [dir]', 'Output analysis result in static web app')
 
 const parsed = cli.parse()
 
