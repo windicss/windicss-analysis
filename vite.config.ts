@@ -17,7 +17,9 @@ export default defineConfig({
   plugins: [
     Vue(),
     WindiCSS(),
-    Pages(),
+    Pages({
+      importMode: 'sync',
+    }),
     ViteComponents({
       customComponentResolvers: [
         ViteIconsResolver({
