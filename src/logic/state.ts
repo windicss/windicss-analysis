@@ -4,9 +4,16 @@ import { AnalysisReport, uniq } from '@shared'
 
 export const data = ref<AnalysisReport | null>()
 
+export const isServerless = Boolean(window.__windicss_analysis_serverless)
+
 export async function fetchData(refetch = false) {
-  data.value = await fetch(`/api/report.json${refetch ? '?force=true' : ''}`)
-    .then(r => r.json())
+  if (window.__windicss_analysis_report && !refetch) {
+    data.value = window.__windicss_analysis_report
+  }
+  else {
+    data.value = await fetch(`/api/report.json${refetch ? '?force=true' : ''}`)
+      .then(r => r.json())
+  }
   return data.value
 }
 

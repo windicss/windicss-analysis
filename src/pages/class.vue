@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useFetch } from '@vueuse/core'
-import { getClassInfo } from '~/logic'
+import { getClassInfo, isServerless } from '~/logic'
 
 const route = useRoute()
 const name = computed(() => route.query.name as string || '')
@@ -10,7 +10,9 @@ const name = computed(() => route.query.name as string || '')
 const info = getClassInfo(name)
 
 const url = computed(() => `/api/interpret?name=${encodeURIComponent(name.value)}`)
-const { data: css } = useFetch(url).text()
+const css = isServerless
+  ? ref('')
+  : useFetch(url).text().data
 </script>
 
 <template>
@@ -29,10 +31,12 @@ const { data: css } = useFetch(url).text()
       </div>
       <div>{{ info.category }}</div>
     </div>
-    <div class="subheader">
-      CSS
-    </div>
-    <CodeBlock lang="css" :code="css" />
+    <template v-if="!isServerless">
+      <div class="subheader">
+        CSS
+      </div>
+      <CodeBlock lang="css" :code="css" />
+    </template>
     <br>
     <div class="subheader">
       Used in Files<sup class="ml-1 opacity-50">{{ info.files.length }}</sup>
