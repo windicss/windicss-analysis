@@ -13,13 +13,12 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="flex flex-wrap">
+  <div class="flex flex-wrap gap-x-2 gap-y-2">
     <ClassLabel
       v-for="c in props.classes"
       :key="c"
       :name="c"
       :count="props.count"
-      class="mr-2"
     />
   </div>
 </template>

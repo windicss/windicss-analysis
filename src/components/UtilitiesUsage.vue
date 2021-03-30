@@ -13,7 +13,7 @@ import { categorized } from '~/logic'
         :key="name"
         class="p-4 rounded-md bg-gray-400 bg-opacity-5"
       >
-        <div class="text-sm pb-2">
+        <div class="text-sm pb-4">
           <span class="capitalize">
             {{ name.replace(/([A-Z])/g, ' $1') }}
           </span>

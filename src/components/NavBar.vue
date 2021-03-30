@@ -9,6 +9,7 @@ import { name } from '~/logic'
       <div class="ml-2 my-auto">
         <div class="text-xl">
           Windi Analyzer
+          <sup class="opacity-50 italic text-xs">Alpha</sup>
         </div>
         <div class="text-sm font-mono opacity-50">
           {{ name }}
@@ -18,6 +19,7 @@ import { name } from '~/logic'
 
     <div class="flex-auto"></div>
 
+    <PreferencesButton />
     <a
       class="!outline-none opacity-50 hover:opacity-75 inline-block text-xl mr-4 my-auto"
       href="https://github.com/windicss/windicss-analysis"

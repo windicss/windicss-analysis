@@ -18,9 +18,9 @@ const url = computed(() => `${editor.value}://file/${props.path}`)
 <template>
   <a
     :href="url"
-    class="py-2 px-3 -mx-3 text-sm bg-gray-500 font-mono bg-opacity-0 hover:bg-opacity-10 rounded"
+    class="py-2 px-3 -mx-3 text-sm bg-gray-400 font-mono bg-opacity-0 hover:bg-opacity-10 rounded"
   >
     <FileIcon :type="getFileExt(filepath)" />
-    <span class="opacity-50 ml-2 hover:opacity-100">{{ filepath }}</span>
+    <span class="ml-2 opacity-50">{{ filepath }}</span>
   </a>
 </template>

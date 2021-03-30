@@ -2,8 +2,7 @@
   <div class="container">
     <Overview />
     <TopUtilities />
-    <ColorPalette />
+    <!-- <ColorPalette /> -->
     <UtilitiesUsage />
-    <PreferencesPanel />
   </div>
 </template>

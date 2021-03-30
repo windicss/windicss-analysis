@@ -14,12 +14,12 @@ function set(v: string) {
 </script>
 
 <template>
-  <ul>
+  <ul class="text-sm rounded flex overflow-hidden">
     <li
       v-for="i of items"
       :key="i.value"
-      class="cursor-pointer"
-      :class="i.value === props.modelValue ? 'text-primary': 'opacity-50'"
+      class="cursor-pointer inline-block px-3 py-1 whitespace-nowrap bg-gray-400 bg-opacity-20"
+      :class="i.value === props.modelValue ? 'text-primary bg-primary': 'opacity-30'"
       @click="set(i.value)"
     >
       {{ i.display || i.value }}

@@ -3,12 +3,12 @@ import { editor } from '~/logic/preferences'
 </script>
 
 <template>
-  <div class="p-4">
-    <div class="subheader">
+  <div class="p-4 text-left">
+    <div>
       Preferences
     </div>
-    <div>
-      Editor
+    <div class="subheader my-2">
+      Open in Editor
     </div>
     <OptionsSwitch
       v-model="editor"
