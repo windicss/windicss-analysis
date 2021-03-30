@@ -6,39 +6,37 @@ import { runAnalysis } from './analysis'
 import { startServer } from './server'
 import { generateBuild } from './build'
 
-const cli = cac()
+const cli = cac('windicss-analysis')
 
 cli
-  .option('--port <port>', 'Port', {
-    default: 8113,
-  })
-  .option('--open', 'Open in browser', {
-    default: true,
-  })
-  .option('-o, --output [path]', 'Output analysis result file (default: JSON)')
-  .option('--html', 'Output static app', {
-    default: false,
-  })
   .help()
   .version(version)
+  .option('--port <port>', 'Port', { default: 8113 })
+  .option('--open', 'Open in browser', { default: true })
+  .option('--json [filepath]', 'Output analysis result file in JSON')
+  .option('--html [dir]', 'Output analysis result in static web app', { default: false })
 
 const parsed = cli.parse()
 
 async function run() {
   const root = resolve(cli.args[0] || process.cwd())
+  if (parsed.options.help)
+    return
+
   if (parsed.options.html) {
-    if (parsed.options.output === true)
-      parsed.options.output = 'windicss-analysis-result.json'
+    if (parsed.options.html === true)
+      parsed.options.html = resolve(root, 'windicss-analysis-report')
     await generateBuild({
       root,
-      outDir: resolve(root, 'windicss-analysis-report'),
+      outDir: parsed.options.html,
     })
   }
-  else if (parsed.options.output) {
-    if (parsed.options.output === true)
-      parsed.options.output = 'windicss-analysis-result.json'
+  else if (parsed.options.json) {
+    if (parsed.options.json === true)
+      parsed.options.json = 'windicss-analysis-report.json'
+
     await fs.writeFile(
-      parsed.options.output,
+      parsed.options.json,
       JSON.stringify((await runAnalysis({ root })).result, null, 2),
       'utf-8',
     )

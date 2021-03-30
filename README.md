@@ -6,8 +6,6 @@ An analyser tool for [Windi CSS](https://github.com/windicss/windicss). Browseri
 
 ## Try
 
-### CLI
-
 Run the following commnad under your project root
 
 ```bash

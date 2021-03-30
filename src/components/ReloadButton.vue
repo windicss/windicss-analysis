@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isServerless, fetchData } from '~/logic'
+import { isStatic, fetchData } from '~/logic'
 
 function reload() {
   fetchData(true)
@@ -8,7 +8,7 @@ function reload() {
 
 <template>
   <button
-    v-if="!isServerless"
+    v-if="!isStatic"
     title="Reload"
     class="button text-sm"
     @click="reload"

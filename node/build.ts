@@ -19,7 +19,7 @@ export async function generateBuild(options: BuildOptions) {
   )
 
   const headScript = `
-window.__windicss_analysis_serverless = true
+window.__windicss_analysis_static = true
 window.__windicss_analysis_report = ${JSON.stringify(result)}
 `
 

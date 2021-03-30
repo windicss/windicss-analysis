@@ -4,7 +4,7 @@ import { AnalysisReport, uniq } from '@shared'
 
 export const data = ref<AnalysisReport | null>()
 
-export const isServerless = Boolean(window.__windicss_analysis_serverless)
+export const isStatic = Boolean(window.__windicss_analysis_static)
 
 export const searchEnabled = ref(false)
 

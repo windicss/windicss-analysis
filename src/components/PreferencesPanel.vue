@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { isStatic } from '~/logic'
 import { editor } from '~/logic/preferences'
 </script>
 
@@ -17,9 +18,11 @@ import { editor } from '~/logic/preferences'
         { value: 'vscode-insiders', display: 'VS Code Insiders' },
       ]"
     />
-    <div class="subheader my-2">
-      Reload
-    </div>
-    <ReloadButton />
+    <template v-if="!isStatic">
+      <div class="subheader my-2">
+        Reload
+      </div>
+      <ReloadButton />
+    </template>
   </div>
 </template>

@@ -2,7 +2,7 @@
 import { computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useFetch } from '@vueuse/core'
-import { getUtilityInfo, isServerless } from '~/logic'
+import { getUtilityInfo, isStatic } from '~/logic'
 
 const route = useRoute()
 const name = computed(() => route.query.name as string || '')
@@ -14,7 +14,7 @@ const request = useFetch(url, { immediate: false, refetch: false })
 const css = computed(() => {
   if (info.css)
     return info.css
-  if (isServerless)
+  if (isStatic)
     return ''
   return request.data.value
 })
