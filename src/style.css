@@ -1,16 +1,23 @@
 @import 'prism-theme-vars/base.css';
 
+:root {
+  --background: var(--vscode-editor-background, #ffffff);
+  --foreground: var(--vscode-editor-foreground, #111111);
+}
+
 html,
 body,
 #app {
   height: 100vh;
   margin: 0;
   padding: 0;
+  background: var(--background);
+  color: var( --foreground);
 }
 
 html.dark {
-  background: #121212;
-  color: white;
+  --background: var(--vscode-editor-background, #121212);
+  --foreground: var(--vscode-editor-foreground, #ffffff);
 }
 
 :root {
