@@ -28,7 +28,7 @@ function close() {
         <input v-model="value" class="bg-transparent outline-none w-full" placeholder="Search..." />
       </div>
       <div v-if="result.length" class="px-2 pt-6 rounded">
-        <ClassesList :classes="result" count="count" @click="close" />
+        <UtilitiesList :utilities="result" count="count" @click="close" />
       </div>
     </div>
   </div>

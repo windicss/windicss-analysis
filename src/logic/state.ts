@@ -35,18 +35,18 @@ export const colors = computed(() => {
 })
 
 export const root = computed(() => data.value?.root || '')
-export const fullUtilities = computed(() => data.value?.files.flatMap(i => i.classes) || [])
+export const fullUtilities = computed(() => data.value?.files.flatMap(i => i.utilities) || [])
 export const utilities = computed(() => Object.keys(data.value?.utilities || {}).sort())
 export const files = computed(() => data.value?.files.map(i => i.filepath) || [])
 
-export function getClassInfo(name: MaybeRef<string>) {
+export function getUtilityInfo(name: MaybeRef<string>) {
   const utility = data.value?.utilities[unref(name)]
   const base = utility?.base ? data.value?.bases[utility.base] : undefined
   return {
     ...utility,
     baseCount: base?.count,
     files: data.value?.files
-      .filter(i => i.classes.includes(unref(name)))
+      .filter(i => i.utilities.includes(unref(name)))
       .map(i => i.filepath) || [],
   }
 }
@@ -73,10 +73,10 @@ export const categorized = computed(() => {
   return categories.value
     .map(i => ({
       name: i,
-      classes: Object.values(data.value!.utilities)
+      utilities: Object.values(data.value!.utilities)
         .filter(u => u.category === i)
         .sort((a, b) => b.count - a.count)
         .map(i => i.full),
     }))
-    .sort((a, b) => b.classes.length - a.classes.length)
+    .sort((a, b) => b.utilities.length - a.utilities.length)
 })

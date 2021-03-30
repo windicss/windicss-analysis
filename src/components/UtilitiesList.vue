@@ -2,7 +2,7 @@
 import { defineProps } from 'vue'
 
 const props = defineProps({
-  classes: {
+  utilities: {
     type: Array,
     default: () => [],
   },
@@ -14,8 +14,8 @@ const props = defineProps({
 
 <template>
   <div class="flex flex-wrap gap-x-2 gap-y-2">
-    <ClassLabel
-      v-for="c in props.classes"
+    <UtilityLabel
+      v-for="c in props.utilities"
       :key="c"
       :name="c"
       :count="props.count"

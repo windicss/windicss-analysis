@@ -5,12 +5,12 @@ import { topUtilities } from '~/logic'
 <template>
   <div class="mb-5">
     <div class="subheader">
-      Top 10 utilities
+      Top 10 Utilities
     </div>
     <div
       class="p-4 rounded-md bg-gray-400 bg-opacity-5"
     >
-      <ClassesList :classes="topUtilities" count="baseCount" />
+      <UtilitiesList :utilities="topUtilities" count="baseCount" />
     </div>
   </div>
 </template>

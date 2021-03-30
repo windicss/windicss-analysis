@@ -2,7 +2,7 @@ import type { Shortcut } from 'windicss/types/interfaces'
 
 export interface FileInfo {
   filepath: string
-  classes: string[]
+  utilities: string[]
 }
 
 export interface UtilityInfo {

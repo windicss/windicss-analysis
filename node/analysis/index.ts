@@ -25,18 +25,18 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
     code = utils.transformGroups(code)
     const { classes } = await utils.applyExtractors(code, filepath)
     files.push({
-      classes: classes || [],
+      utilities: classes || [],
       filepath,
     })
   }
 
   const shortcuts: Record<string, Shortcut> = utils.processor.config('shortcuts') || {} as any
 
-  const { success: utilityNames, styleSheet } = utils.processor.interpret(files.flatMap(i => i.classes).join(' '))
+  const { success: utilityNames, styleSheet } = utils.processor.interpret(files.flatMap(i => i.utilities).join(' '))
 
-  files.forEach(i => i.classes = i.classes.filter(c => utilityNames.includes(c)))
+  files.forEach(i => i.utilities = i.utilities.filter(c => utilityNames.includes(c)))
 
-  const allUsages = files.flatMap(i => i.classes)
+  const allUsages = files.flatMap(i => i.utilities)
 
   const utilitiesList = utilityNames.map<UtilityInfo>(i => ({
     count: countElement(allUsages, i),
