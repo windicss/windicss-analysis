@@ -1,0 +1,11 @@
+[build.environment]
+  NPM_FLAGS = "--prefix=/dev/null"
+
+[build]
+  publish = "windicss-analysis-report"
+  command = "npx pnpm i --store=node_modules/.pnpm-store && npm run genreate"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -32,6 +32,7 @@
     "build:app": "vite build",
     "build:server": "tsup node/index.ts node/cli.ts --dts --format cjs,esm",
     "prepublishOnly": "npm run build",
+    "genreate": "npm run build:app && npm run start -- --html",
     "release": "npx bumpp --push --tag --commit && npm publish"
   },
   "dependencies": {
