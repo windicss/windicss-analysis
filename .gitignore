@@ -4,3 +4,4 @@ dist
 packages/vite-plugin-windicss/README.md
 packages/**/LICENSE
 packages/windicss-analysis/public/output.json
+windicss-analysis-report
