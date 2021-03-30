@@ -19,6 +19,7 @@ devDependencies:
   chalk: 4.1.0
   debug: 4.3.2
   eslint: 7.23.0
+  esno: 0.5.0
   filesize: 6.1.0
   fuse.js: 6.4.6
   gzip-size: 6.0.0
@@ -1241,6 +1242,13 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-QCOllgZJtaUo9miYBcLChTUaHNjJF3PYs1VidD7AwiEj1kYxKeQTctLAezAOH5ZKRH0g2IgPn6KwB4IT8iRpvA==
+  /esbuild-register/2.3.0:
+    dependencies:
+      esbuild: 0.9.7
+      jsonc-parser: 3.0.0
+    dev: true
+    resolution:
+      integrity: sha512-uT3WXEQGAqzrI0SLy1Jz39BzIBiLWd5La9zFZ+FUSCPGqJbE+ZJHUTE8yHP1GVfyHKrrAFCZqLieaHkSprIRDQ==
   /esbuild/0.10.2:
     dev: true
     hasBin: true
@@ -1551,6 +1559,14 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-kqvNVbdkjzpFy0XOszNwjkKzZ+6TcwCQ/h+ozlcIWwaimBBuhlQ4nN6kbiM2L+OjDcznkTJxzYfRFH92sx4a0Q==
+  /esno/0.5.0:
+    dependencies:
+      esbuild: 0.9.7
+      esbuild-register: 2.3.0
+    dev: true
+    hasBin: true
+    resolution:
+      integrity: sha512-r0tsflar7RB918JCjTNyU2QWfgyH2jgfAzHK1tABr3A5y84ruS86JanVHc6wove/V5I98soLZbg8Foso1dqCMA==
   /espree/6.2.1:
     dependencies:
       acorn: 7.4.1
@@ -2279,6 +2295,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-mh5LY5byThmc692EqJS3Ss9sViNoNeCLNG5VQUgJLoAFFM3FzdIetd99qEiiQ+NXBVAIUgX5sWeK9leniS8RbQ==
+  /jsonc-parser/3.0.0:
+    dev: true
+    resolution:
+      integrity: sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==
   /jsonfile/6.1.0:
     dependencies:
       universalify: 2.0.0
@@ -3777,6 +3797,7 @@ specifiers:
   connect: ^3.7.0
   debug: ^4.3.2
   eslint: ^7.23.0
+  esno: ^0.5.0
   fast-glob: ^3.2.5
   filesize: ^6.1.0
   fs-extra: ^9.1.0
