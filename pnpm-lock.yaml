@@ -16,6 +16,7 @@ devDependencies:
   debug: 4.3.2
   eslint: 7.23.0
   filesize: 6.1.0
+  fuse.js: 6.4.6
   gzip-size: 6.0.0
   open: 8.0.4
   prism-theme-vars: 0.2.2
@@ -1741,6 +1742,12 @@ packages:
     dev: true
     resolution:
       integrity: sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
+  /fuse.js/6.4.6:
+    dev: true
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-/gYxR/0VpXmWSfZOIPS3rWwU8SHgsRTwWuXhyb2O6s7aRuVtHtxCkR33bNYu3wyLyNx/Wpv0vU7FZy8Vj53VNw==
   /generic-names/2.0.1:
     dependencies:
       loader-utils: 1.4.0
@@ -3716,6 +3723,7 @@ specifiers:
   debug: ^4.3.2
   eslint: ^7.23.0
   filesize: ^6.1.0
+  fuse.js: ^6.4.6
   gzip-size: ^6.0.0
   open: ^8.0.4
   prism-theme-vars: ^0.2.2

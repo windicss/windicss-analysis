@@ -19,6 +19,7 @@ import { name } from '~/logic'
 
     <div class="flex-auto"></div>
 
+    <SearchModal />
     <div class="flex gap-4">
       <a
         class="icon-button"
@@ -27,6 +28,7 @@ import { name } from '~/logic'
       >
         <carbon-logo-github class="text-xl" />
       </a>
+      <SearchButton />
       <ReloadButton />
       <PreferencesButton />
       <DarkModeSwitch />

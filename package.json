@@ -53,6 +53,7 @@
     "debug": "^4.3.2",
     "eslint": "^7.23.0",
     "filesize": "^6.1.0",
+    "fuse.js": "^6.4.6",
     "gzip-size": "^6.0.0",
     "open": "^8.0.4",
     "prism-theme-vars": "^0.2.2",

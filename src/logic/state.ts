@@ -6,6 +6,8 @@ export const data = ref<AnalysisReport | null>()
 
 export const isServerless = Boolean(window.__windicss_analysis_serverless)
 
+export const searchEnabled = ref(false)
+
 export async function fetchData(refetch = false) {
   if (window.__windicss_analysis_report && !refetch) {
     data.value = window.__windicss_analysis_report
@@ -33,8 +35,8 @@ export const colors = computed(() => {
 })
 
 export const root = computed(() => data.value?.root || '')
-export const fullClasses = computed(() => data.value?.files.flatMap(i => i.classes) || [])
-export const classes = computed(() => Object.keys(data.value?.utilities || {}).sort())
+export const fullUtilities = computed(() => data.value?.files.flatMap(i => i.classes) || [])
+export const utilities = computed(() => Object.keys(data.value?.utilities || {}).sort())
 export const files = computed(() => data.value?.files.map(i => i.filepath) || [])
 
 export function getClassInfo(name: MaybeRef<string>) {
