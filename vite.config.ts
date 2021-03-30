@@ -36,6 +36,8 @@ export default defineConfig({
       'vue',
       '@vueuse/core',
       '@vueuse/router',
+      'fuse.js',
+      'prismjs',
     ],
     exclude: [
       'vue-demi',
