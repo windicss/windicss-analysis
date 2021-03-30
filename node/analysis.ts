@@ -121,5 +121,3 @@ export function parseUtility(name: string): Partial<UtilityInfo> {
 
   return info
 }
-
-export * from '../shared/types'
