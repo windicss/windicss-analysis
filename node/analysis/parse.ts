@@ -6,7 +6,7 @@ import { dynamicUtilities, staticUtilities } from './categories'
 export function parseUtility(name: string, processor: Processor): Partial<UtilityInfo> {
   const info: Partial<UtilityInfo> = {}
 
-  const shortcuts = processor.config('shortcuts') as Record<string, any>
+  const shortcuts = processor.config('shortcuts') as Record<string, any> || {}
   if (shortcuts[name]) {
     info.shortcut = shortcuts[name]
     info.category = 'shortcut'
@@ -25,7 +25,11 @@ export function parseUtility(name: string, processor: Processor): Partial<Utilit
 
   const [type] = (name.startsWith('-') ? name.slice(1) : name).split('-')
 
-  if (name in staticUtilities) {
+  if (name.includes('$')) {
+    info.category = staticUtilities[name]
+    info.type = 'variable'
+  }
+  else if (name in staticUtilities) {
     info.category = staticUtilities[name]
     info.type = type
   }
