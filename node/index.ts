@@ -31,7 +31,13 @@ export async function startServer(options: Options = {}) {
   app.use(ApiMiddleware({
     root,
   }))
-  app.use(serveStatic(resolve(__dirname, '../dist/app')))
+
+  app.use(
+    serveStatic(
+      resolve(__dirname, '../dist/app'),
+      { cacheControl: false },
+    ),
+  )
 
   http.createServer(app).listen(port)
 

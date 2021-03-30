@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useFetch } from '@vueuse/core'
 import { getUtilityInfo, isServerless } from '~/logic'
@@ -10,9 +10,20 @@ const name = computed(() => route.query.name as string || '')
 const info = getUtilityInfo(name)
 
 const url = computed(() => `/api/interpret?name=${encodeURIComponent(name.value)}`)
-const css = isServerless
-  ? ref('')
-  : useFetch(url).text().data
+const request = useFetch(url, { immediate: false, refetch: false })
+const css = computed(() => {
+  if (info.css)
+    return info.css
+  if (isServerless)
+    return ''
+  return request.data.value
+})
+
+watch(
+  name,
+  () => request.execute(),
+  { immediate: true },
+)
 </script>
 
 <template>
@@ -26,16 +37,28 @@ const css = isServerless
         Total usages
       </div>
       <div>{{ info.count }}</div>
+
       <div class="opacity-50 text-sm my-auto">
         Usage in files
       </div>
       <div>{{ info.files.length }} files</div>
+
       <div class="opacity-50 text-sm my-auto">
         Category
       </div>
       <div class="capitalize">
         {{ info.category }}
       </div>
+
+      <template v-if="name !== info.base">
+        <div class="opacity-50 text-sm my-auto">
+          Base
+        </div>
+        <div>
+          <UtilityLabel :name="info.base" />
+        </div>
+      </template>
+
       <template v-if="info.colorName">
         <div class="opacity-50 text-sm my-auto">
           Color
@@ -47,7 +70,15 @@ const css = isServerless
         </div>
       </template>
     </div>
-    <template v-if="!isServerless">
+
+    <template v-if="info.shortcut">
+      <div class="subheader">
+        Shortcuts
+      </div>
+      <CodeBlock lang="json" :code="JSON.stringify(info.shortcut, null, 2)" />
+    </template>
+    <br>
+    <template v-if="css">
       <div class="subheader">
         CSS
       </div>

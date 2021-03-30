@@ -16,6 +16,7 @@ export interface UtilityInfo {
   important?: boolean
   colorName?: string
   colorHex?: string
+  css?: string
   shortcut?: Shortcut
 }
 

@@ -9,12 +9,23 @@ import { parseUtility } from './parse'
 
 const NAME = 'windicss-analysis'
 
+export interface AnalysisOptions {
+  interpertUtilities?: boolean
+}
+
 export interface AnalysisReturn {
   result: AnalysisReport
   utils: WindiPluginUtils
 }
 
-export async function runAnalysis(userOptions: UserOptions = {}): Promise<AnalysisReturn> {
+export async function runAnalysis(
+  userOptions: UserOptions = {},
+  options: AnalysisOptions = {},
+): Promise<AnalysisReturn> {
+  const {
+    interpertUtilities = false,
+  } = options
+
   const utils = createUtils(userOptions, { name: NAME })
   await utils.init()
 
@@ -44,6 +55,12 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
     full: i,
     ...parseUtility(i, utils.processor),
   }))
+
+  if (interpertUtilities) {
+    utilitiesList.forEach((i) => {
+      i.css = utils.processor.interpret(i.full).styleSheet.build()
+    })
+  }
 
   const utilities = Object.fromEntries(utilitiesList.map(i => [i.full, i]))
 
