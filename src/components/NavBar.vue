@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { name } from '~/logic'
+import { name, isServerless } from '~/logic'
 </script>
 
 <template>
   <nav class="container py-4 flex">
     <RouterLink class="flex" to="/">
-      <Logo class="text-2xl m-auto -ml-1" />
+      <template v-if="!isServerless">
+        <Logo class="m-auto -ml-1 text-2xl" />
+      </template>
       <div class="ml-2 my-auto">
         <div class="text-xl">
           Windi Analyzer
