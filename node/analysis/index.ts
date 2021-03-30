@@ -4,8 +4,8 @@ import { createUtils, UserOptions, WindiPluginUtils } from '@windicss/plugin-uti
 import type { Shortcut } from 'windicss/types/interfaces'
 import gzipSize from 'gzip-size'
 import fileSize from 'filesize'
-import { countElement, AnalysisReport, FileInfo, UtilityInfo, BaseInfo, uniq } from '../shared'
-import { dynamicUtilities, staticUtilities } from './constants'
+import { countElement, AnalysisReport, FileInfo, UtilityInfo, BaseInfo, uniq } from '../../shared'
+import { parseUtility } from './parse'
 
 const NAME = 'windicss-analysis'
 
@@ -38,19 +38,12 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
 
   const allUsages = files.flatMap(i => i.classes)
 
-  const utilitiesList = utilityNames.map<UtilityInfo>((i) => {
-    const info = {
-      count: countElement(allUsages, i),
-      base: i,
-      full: i,
-      ...parseUtility(i),
-    }
-    if (shortcuts[i]) {
-      info.shortcut = shortcuts[i]
-      info.category = 'shortcut'
-    }
-    return info
-  })
+  const utilitiesList = utilityNames.map<UtilityInfo>(i => ({
+    count: countElement(allUsages, i),
+    base: i,
+    full: i,
+    ...parseUtility(i, utils.processor),
+  }))
 
   const utilities = Object.fromEntries(utilitiesList.map(i => [i.full, i]))
 
@@ -90,34 +83,4 @@ export async function runAnalysis(userOptions: UserOptions = {}): Promise<Analys
     result,
     utils,
   }
-}
-
-export function parseUtility(name: string): Partial<UtilityInfo> {
-  const info: Partial<UtilityInfo> = { }
-
-  if (name[0] === '!') {
-    info.important = true
-    name = name.slice(1)
-  }
-  if (name.includes(':')) {
-    const variants = name.split(/:/g)
-    info.variants = variants.slice(0, -1)
-    name = variants.slice(-1)[0]
-  }
-  info.base = name
-  let [type] = (name.startsWith('-') ? name.slice(1) : name).split('-')
-
-  if (name in staticUtilities) {
-    info.category = staticUtilities[name]
-    type = name
-  }
-  else if (type in dynamicUtilities) {
-    info.category = dynamicUtilities[type]
-  }
-  else {
-    info.category = 'unknown'
-  }
-  info.type = type
-
-  return info
 }
