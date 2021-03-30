@@ -44,7 +44,7 @@ export function getUtilityInfo(name: MaybeRef<string>) {
   const base = utility?.base ? data.value?.bases[utility.base] : undefined
   return {
     ...utility,
-    baseCount: base?.count,
+    baseCount: base?.count || utility?.count,
     files: data.value?.files
       .filter(i => i.utilities.includes(unref(name)))
       .map(i => i.filepath) || [],

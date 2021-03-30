@@ -24,6 +24,6 @@ const note = computed(() => info.value[props.count])
     class="font-mono text-sm opacity-50 border-b border-transparent hover:(opacity-100 text-primary border-primary)"
   >
     <span>{{ props.name }}</span>
-    <sup v-if="note" class="opacity-50 ml-0.5">{{ note }}</sup>
+    <sup v-if="note && note != 1" class="opacity-50 ml-0.5">{{ note }}</sup>
   </RouterLink>
 </template>
