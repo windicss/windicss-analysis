@@ -10,8 +10,8 @@ defineProps<{ color: ColorInfo }>()
     <div class="rounded h-10 w-25" :style="{ background: color.hex }">
     </div>
     <div class="mt-1">
-      <span class="font-mono">{{ color.name }}</span>
-      <sup class="text-sm ml-0.5 opacity-50">{{ color.utilities.length }}</sup>
+      <span class="text-sm">{{ color.name }}</span>
+      <sup class="text-xs ml-0.5 opacity-50">{{ color.utilities.length }}</sup>
     </div>
     <div class="font-mono text-sm opacity-50">
       {{ color.hex }}
