@@ -82,6 +82,7 @@ export async function runAnalysis(
         name: i,
         hex: utilitiesList.find(u => u.colorName === i)?.colorHex,
         utilities: utilitiesList.filter(u => u.colorName === i).map(i => i.full),
+        variants: uniq(utilitiesList.filter(u => u.colorName === i).flatMap(i => i.variants || [])),
       }]),
   )
 

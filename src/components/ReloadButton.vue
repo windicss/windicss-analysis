@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { isStatic, fetchData } from '~/logic'
+import { fetchData } from '~/logic'
+import { isStatic } from '~/env'
 
 function reload() {
   fetchData(true)

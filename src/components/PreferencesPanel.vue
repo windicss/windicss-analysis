@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isStatic } from '~/logic'
+import { isStatic } from '~/env'
 import { editor } from '~/logic/preferences'
 </script>
 

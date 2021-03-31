@@ -4,8 +4,6 @@ import { AnalysisReport, uniq } from '@shared'
 
 export const data = ref<AnalysisReport | null>()
 
-export const isStatic = Boolean(window.__windicss_analysis_static)
-
 export const searchEnabled = ref(false)
 
 export async function fetchData(refetch = false) {
