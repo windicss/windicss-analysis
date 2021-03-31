@@ -4,10 +4,9 @@ import { colors } from '~/logic'
 
 const variant = ref('')
 
-const filteredColors = computed(() => {
-  if (!variant.value)
+function filterColors(v: string) {
+  if (!v)
     return colors.value
-  let v = variant.value
   let exclude = false
   if (v[0] === '!') {
     exclude = true
@@ -18,7 +17,9 @@ const filteredColors = computed(() => {
       ? !i.variants.includes(v)
       : i.variants.includes(v),
   )
-})
+}
+
+const filteredColors = computed(() => filterColors(variant.value))
 </script>
 
 <template>
@@ -29,7 +30,7 @@ const filteredColors = computed(() => {
         <sup class="opacity-50 text-sm">{{ filteredColors.length }}</sup>
       </div>
       <div class="flex-auto" />
-      <div>
+      <div v-if="filterColors('dark').length">
         <OptionsSwitch
           v-model="variant"
           :items="[
