@@ -6,7 +6,7 @@ An analyser tool for [Windi CSS](https://github.com/windicss/windicss). Browseri
 
 ## Get Started
 
-Run the following commnad under your project root
+Run the following command under your project root
 
 ```bash
 npx windicss-analysis
