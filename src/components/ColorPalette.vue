@@ -42,7 +42,7 @@ const filteredColors = computed(() => filterColors(prefix.value))
       />
     </div>
 
-    <div class="flex flex-wrap gap-2 -mx-2">
+    <div class="flex flex-wrap gap-1 -mx-2">
       <RouterLink
         v-for="color in filteredColors"
         :key="color.name"

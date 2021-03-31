@@ -38,9 +38,9 @@ export const utilityNames = computed(() => Object.keys(data.value?.utilities || 
 export const utilities = computed(() => Object.values(data.value?.utilities || {}))
 
 export const files = computed(() =>
-  data.value?.files
+  (data.value?.files || [])
     .filter(i => i.utilities.length)
-    .sort((a, b) => a.filepath.localeCompare(b.filepath)) || [],
+    .sort((a, b) => a.filepath.localeCompare(b.filepath)),
 )
 
 export function getUtilityInfo(name: MaybeRef<string>) {
@@ -49,9 +49,9 @@ export function getUtilityInfo(name: MaybeRef<string>) {
   return {
     ...utility,
     baseCount: base?.count || utility?.count,
-    files: data.value?.files
+    files: (data.value?.files || [])
       .filter(i => i.utilities.includes(unref(name)))
-      .map(i => i.filepath) || [],
+      .map(i => i.filepath),
     variants: uniq(
       utilities.value
         .filter(i => i.base === utility?.base && i.full !== utility.full)

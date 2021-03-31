@@ -1,16 +1,18 @@
 # Windi Analysis
 
-An analyser tool for [Windi CSS](https://github.com/windicss/windicss). Browsering your utilities usages, have an overview of your design system and identify "bad practices".
+An analyser tool for [Windi CSS](https://github.com/windicss/windicss). Browsering your utilities usages, have an overview of your design system, identify "bad practices", and more!
 
 ![](https://user-images.githubusercontent.com/11247099/112994978-595b9800-919d-11eb-8b37-4de8ab03da42.png)
 
-## Try
+## Get Started
 
 Run the following commnad under your project root
 
 ```bash
 npx windicss-analysis
 ```
+
+The analysis report will be available at http://localhost:8113/
 
 ### NPM
 
