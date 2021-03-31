@@ -36,7 +36,12 @@ export const root = computed(() => data.value?.root || '')
 export const fullUtilities = computed(() => data.value?.files.flatMap(i => i.utilities) || [])
 export const utilityNames = computed(() => Object.keys(data.value?.utilities || {}).sort())
 export const utilities = computed(() => Object.values(data.value?.utilities || {}))
-export const files = computed(() => data.value?.files.filter(i => i.utilities.length).map(i => i.filepath) || [])
+
+export const files = computed(() =>
+  data.value?.files
+    .filter(i => i.utilities.length)
+    .sort((a, b) => a.filepath.localeCompare(b.filepath)) || [],
+)
 
 export function getUtilityInfo(name: MaybeRef<string>) {
   const utility = data.value?.utilities[unref(name)]
