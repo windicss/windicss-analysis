@@ -14,7 +14,7 @@ npx windicss-analysis
 
 ### NPM
 
-Or you can install locally to reuse the same version of `windicss`
+Or you can install locally to reuse the same version of your local `windicss` module
 
 ```bash
 npm i -D windicss-analysis
@@ -35,7 +35,15 @@ npm i -D windicss-analysis
 
 ### Online Preview
 
-> TODO
+You can have a preview the analysing report of the analyser itself
+
+[analysis-demo.windicss.org](http://analysis-demo.windicss.org)
+
+You can genreate your own report and host it statically by running the following command
+
+```bash
+npx windicss-analysis --html dist
+```
 
 ## License
 
