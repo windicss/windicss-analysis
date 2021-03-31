@@ -31,7 +31,13 @@ npm i -D windicss-analysis
 
 ### VS Code Extension
 
-> TODO
+> Beta support added with version 0.8.0, please provide any issues regarding this feature in this repo.
+
+- Open source root of a project using windicss.
+- Open VS Code Command Pallette
+- Run command: `Windi CSS: Run & Open Analysis`
+- Shortly wait (should generate report json & open webview)
+- See Analyser in Second Editor Column
 
 ### Online Preview
 
