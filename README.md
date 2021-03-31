@@ -2,7 +2,7 @@
 
 An analyser tool for [Windi CSS](https://github.com/windicss/windicss). Browsering your utilities usages, have an overview of your design system, identify "bad practices", and more!
 
-![](https://user-images.githubusercontent.com/11247099/112994978-595b9800-919d-11eb-8b37-4de8ab03da42.png)
+![](https://user-images.githubusercontent.com/11247099/113150805-0c43f880-9267-11eb-85a6-ec1a2f1eed37.png)
 
 ## Get Started
 
@@ -33,12 +33,12 @@ npm i -D windicss-analysis
 
 ### VS Code Extension
 
-> Beta support added with version 0.8.0, please provide any issues regarding this feature in this repo.
+From v0.8.0 of [Windi CSS Intellisense](https://github.com/windicss/windicss-intellisense), it has this analyser built-in.
 
-- Open source root of a project using windicss.
-- Open VS Code Command Pallette
+- Open a project using Windi CSS in VS Code
+- Open the Command Palette (⇧⌘P / Ctrl+Shift+P)
 - Run command: `Windi CSS: Run & Open Analysis`
-- See Analyser in Second Editor Column
+- See Analyser in the second editor column
 
 ### Online Preview
 
