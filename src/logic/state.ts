@@ -33,7 +33,7 @@ export const colors = computed(() => {
 })
 
 export const root = computed(() => data.value?.root || '')
-export const fullUtilities = computed(() => data.value?.files.flatMap(i => i.utilities) || [])
+export const fullUtilities = computed(() => (data.value?.files || []).flatMap(i => i.utilities))
 export const utilityNames = computed(() => Object.keys(data.value?.utilities || {}).sort())
 export const utilities = computed(() => Object.values(data.value?.utilities || {}))
 
