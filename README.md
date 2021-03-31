@@ -52,6 +52,58 @@ You can genreate your own report and host it statically by running the following
 npx windicss-analysis --html dist
 ```
 
+## FAQ
+
+### It does not detecting my files
+
+You will need to configure the `extract.include` options in `windi.config.js` instead of your framework's configurations file so it can be understood by the analyzer so as other intergations support. For example
+
+```ts
+// windi.config.js
+import { defineConfig } from 'windicss/helpers'
+import colors from 'windicss/colors'
+
+export default defineConfig({
+  extract: {
+    include: [
+      'src/**/*.{vue,jsx,tsx,svelte}',
+      'shared/**/*.{vue,ts}',
+    ],
+  },
+})
+```
+
+### Can I use the report for other tools?
+
+Yes. You can get the raw json file via the CLI
+
+```bash
+npx windicss-analysis --json report.json
+```
+
+and process it as you need.
+
+You can also have type support for it via:
+
+```ts
+import type { AnalysisReport } from 'windicss-analysis'
+import rawReport from './report.json'
+
+const report = rawReport as AnalysisReport
+```
+
+### Programmatic Use?
+
+Yes. Just like a normal Node package:
+
+```ts
+import { startServer } from 'windicss-analysis'
+
+startServer({ /*...* / })
+```
+
+Check out the type decrations for more APIs avaliable.
+
 ## License
 
 MIT
