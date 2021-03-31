@@ -45,7 +45,17 @@ watch(
         {{ info.rule?.name }}
       </span>
     </div>
-    <div class="mb-8 grid gap-x-4 gap-y-2" style="grid-template-columns: max-content auto;">
+    <div
+      v-if="!info.full"
+      class="italic opacity-50 mb-8"
+    >
+      This utility does not been used in the project.
+    </div>
+    <div
+      v-if="info.full"
+      class="mb-8 grid gap-x-4 gap-y-2"
+      style="grid-template-columns: max-content auto;"
+    >
       <div class="opacity-50 text-sm my-auto">
         Total usages
       </div>
@@ -118,7 +128,7 @@ watch(
     <div class="subheader">
       Used in Files<sup class="ml-1 opacity-50">{{ info.files.length }}</sup>
     </div>
-    <div>
+    <div v-if="info?.files?.length">
       <FileItem
         v-for="file of info.files"
         :key="file"
