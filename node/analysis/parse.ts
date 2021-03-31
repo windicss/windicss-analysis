@@ -18,7 +18,7 @@ export function parseUtility(name: string, processor: Processor): Partial<Utilit
   }
   if (name.includes(':')) {
     const variants = name.split(/:/g)
-    info.variants = variants.slice(0, -1)
+    info.prefixes = variants.slice(0, -1)
     name = variants.slice(-1)[0]
   }
   info.base = name

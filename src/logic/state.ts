@@ -34,7 +34,8 @@ export const colors = computed(() => {
 
 export const root = computed(() => data.value?.root || '')
 export const fullUtilities = computed(() => data.value?.files.flatMap(i => i.utilities) || [])
-export const utilities = computed(() => Object.keys(data.value?.utilities || {}).sort())
+export const utilityNames = computed(() => Object.keys(data.value?.utilities || {}).sort())
+export const utilities = computed(() => Object.values(data.value?.utilities || {}))
 export const files = computed(() => data.value?.files.filter(i => i.utilities.length).map(i => i.filepath) || [])
 
 export function getUtilityInfo(name: MaybeRef<string>) {
@@ -46,11 +47,16 @@ export function getUtilityInfo(name: MaybeRef<string>) {
     files: data.value?.files
       .filter(i => i.utilities.includes(unref(name)))
       .map(i => i.filepath) || [],
+    variants: uniq(
+      utilities.value
+        .filter(i => i.base === utility?.base && i.full !== utility.full)
+        .map(i => i.full),
+    ),
   }
 }
 
 export const topUtilities = computed(() => {
-  return Object.values(data.value?.utilities || {})
+  return utilities.value
     .sort((a, b) => b.count - a.count)
     .slice(0, 10)
     .map(i => i.base)
@@ -59,9 +65,11 @@ export const topUtilities = computed(() => {
 export const categories = computed(() => {
   if (!data.value)
     return []
-  return uniq(Object.values(data.value.utilities)
-    .flatMap(u => u.category)
-    .filter(Boolean)) as string[]
+  return uniq(
+    utilities.value
+      .flatMap(u => u.category)
+      .filter(Boolean),
+  ) as string[]
 })
 
 export const categorized = computed(() => {
@@ -71,7 +79,7 @@ export const categorized = computed(() => {
   return categories.value
     .map(i => ({
       name: i,
-      utilities: Object.values(data.value!.utilities)
+      utilities: utilities.value
         .filter(u => u.category === i)
         .sort((a, b) => b.count - a.count)
         .map(i => i.full),

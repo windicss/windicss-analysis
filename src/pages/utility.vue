@@ -8,13 +8,13 @@ import { getUtilityInfo } from '~/logic'
 const route = useRoute()
 const name = computed(() => route.query.name as string || '')
 
-const info = getUtilityInfo(name)
+const info = computed(() => getUtilityInfo(name.value))
 
 const url = computed(() => `/api/interpret?name=${encodeURIComponent(name.value)}`)
 const request = useFetch(url, { immediate: false, refetch: false })
 const css = computed(() => {
-  if (info.css)
-    return info.css
+  if (info.value.css)
+    return info.value.css
   if (isStatic)
     return ''
   return request.data.value
@@ -51,6 +51,17 @@ watch(
         {{ info.category }}
       </div>
 
+      <template v-if="info.colorName">
+        <div class="opacity-50 text-sm my-auto">
+          Color
+        </div>
+        <div>
+          <span>{{ info.colorName }}</span>
+          <span class="font-mono opacity-50 ml-1 text-sm">({{ info.colorHex }})</span>
+          <span class="w-4 h-4 ml-2 rounded inline-block align-bottom m-1" :style="{ background: info.colorHex }" />
+        </div>
+      </template>
+
       <template v-if="name !== info.base">
         <div class="opacity-50 text-sm my-auto">
           Base
@@ -60,14 +71,12 @@ watch(
         </div>
       </template>
 
-      <template v-if="info.colorName">
+      <template v-if="info.variants.length">
         <div class="opacity-50 text-sm my-auto">
-          Color
+          Variants
         </div>
-        <div class="flex">
-          {{ info.colorName }}
-          <span class="font-mono opacity-50">({{ info.colorHex }})</span>
-          <div class="w-4 h-4 ml-2 rounded inline-block m-auto" :style="{ background: info.colorHex }"></div>
+        <div>
+          <UtilitiesList :utilities="info.variants" />
         </div>
       </template>
     </div>
@@ -78,7 +87,7 @@ watch(
       </div>
       <CodeBlock lang="json" :code="JSON.stringify(info.shortcut, null, 2)" />
     </template>
-    <br>
+
     <template v-if="css">
       <div class="subheader">
         CSS

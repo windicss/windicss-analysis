@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { colors } from '~/logic'
 
-const variant = ref('')
+const prefix = ref('')
 
 function filterColors(v: string) {
   if (!v)
@@ -14,12 +14,12 @@ function filterColors(v: string) {
   }
   return colors.value.filter(
     i => exclude
-      ? !i.variants.includes(v)
-      : i.variants.includes(v),
+      ? !i.prefixes.includes(v)
+      : i.prefixes.includes(v),
   )
 }
 
-const filteredColors = computed(() => filterColors(variant.value))
+const filteredColors = computed(() => filterColors(prefix.value))
 </script>
 
 <template>
@@ -32,7 +32,7 @@ const filteredColors = computed(() => filterColors(variant.value))
       <div class="flex-auto" />
       <div v-if="filterColors('dark').length">
         <OptionsSwitch
-          v-model="variant"
+          v-model="prefix"
           :items="[
             { value: '', display: 'All' },
             { value: '!dark', display: 'Light' },

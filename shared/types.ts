@@ -12,7 +12,7 @@ export interface UtilityInfo {
   type?: string
   category?: string
   value?: string
-  variants?: string[]
+  prefixes?: string[]
   important?: boolean
   colorName?: string
   colorHex?: string
@@ -30,7 +30,7 @@ export interface ColorInfo {
   name: string
   hex: string
   utilities: string[]
-  variants: string[]
+  prefixes: string[]
 }
 
 export interface AnalysisReport {

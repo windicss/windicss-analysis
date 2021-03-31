@@ -4,7 +4,7 @@ import { createUtils, UserOptions, WindiPluginUtils } from '@windicss/plugin-uti
 import type { Shortcut } from 'windicss/types/interfaces'
 import gzipSize from 'gzip-size'
 import fileSize from 'filesize'
-import { countElement, AnalysisReport, FileInfo, UtilityInfo, BaseInfo, uniq } from '../../shared'
+import { countElement, AnalysisReport, FileInfo, UtilityInfo, BaseInfo, uniq, ColorInfo } from '../../shared'
 import { parseUtility } from './parse'
 
 const NAME = 'windicss-analysis'
@@ -77,12 +77,12 @@ export async function runAnalysis(
   const size = await gzipSize(css)
 
   const colors = Object.fromEntries(
-    uniq(utilitiesList.map(u => u.colorName).filter(i => i))
-      .map(i => [i, {
+    (uniq(utilitiesList.map(u => u.colorName).filter(i => i)) as string[])
+      .map((i): [string, ColorInfo] => [i, {
         name: i,
-        hex: utilitiesList.find(u => u.colorName === i)?.colorHex,
+        hex: utilitiesList.find(u => u.colorName === i)!.colorHex || '',
         utilities: utilitiesList.filter(u => u.colorName === i).map(i => i.full),
-        variants: uniq(utilitiesList.filter(u => u.colorName === i).flatMap(i => i.variants || [])),
+        prefixes: uniq(utilitiesList.filter(u => u.colorName === i).flatMap(i => i.prefixes || [])),
       }]),
   )
 
