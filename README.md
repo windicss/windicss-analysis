@@ -36,7 +36,6 @@ npm i -D windicss-analysis
 - Open source root of a project using windicss.
 - Open VS Code Command Pallette
 - Run command: `Windi CSS: Run & Open Analysis`
-- Shortly wait (should generate report json & open webview)
 - See Analyser in Second Editor Column
 
 ### Online Preview
