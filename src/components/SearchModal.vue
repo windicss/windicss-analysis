@@ -12,7 +12,7 @@ const fuse = computed(() => new Fuse(utilities.value, {
 
 const result = computed(() => {
   const indexes = fuse.value.search(value.value).map(i => i.refIndex)
-  return indexes.map(i => utilities.value[i])
+  return indexes.map(i => utilities.value[i].full)
 })
 
 function close() {

@@ -48,3 +48,10 @@ export interface AnalysisReport {
     gzip: string
   }
 }
+
+export interface HighlightRule {
+  name: string
+  regex?: RegExp | string | Array<RegExp | string>
+  category?: string
+  classes: string
+}

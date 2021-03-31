@@ -1,10 +1,3 @@
-export type Arrayable<T> = T | T[]
-
-export function toArray<T>(v: Arrayable<T>): T[] {
-  if (Array.isArray(v))
-    return v
-  return [v]
-}
 
 export function hash(str: string): string {
   str = str.replace(/\r/g, '')

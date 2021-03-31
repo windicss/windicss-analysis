@@ -16,7 +16,7 @@ const color = computed(() => data.value?.colors[colorName.value])
         <div class="rounded h-25 w-25" :style="{ background: color.hex }">
         </div>
         <div class="px-4">
-          <div class="text-xl">
+          <div class="text-2xl font-mono">
             {{ color.name }}
           </div>
           <div class="font-mono opacity-50">

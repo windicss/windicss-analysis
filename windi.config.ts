@@ -2,6 +2,12 @@ import { defineConfig } from 'windicss/helpers'
 import colors from 'windicss/colors'
 
 export default defineConfig({
+  extract: {
+    include: [
+      'src/**/*.{vue,ts}',
+      'shared/**/*.{vue,ts}',
+    ],
+  },
   shortcuts: {
     'bg-background': 'bg-$background',
     'subheader': 'my-4 uppercase opacity-50 text-sm',

@@ -14,14 +14,16 @@ const props = defineProps({
 
 const url = computed(() => `/utility?name=${encodeURIComponent(props.name)}`)
 const info = computed(() => getUtilityInfo(props.name))
-// @ts-ignore
+// @ts-expect-error
 const note = computed(() => info.value[props.count])
 </script>
 
 <template>
   <RouterLink
+    v-if="name"
     :to="url"
-    class="font-mono text-sm opacity-50 border-b border-transparent hover:(opacity-100 text-primary border-primary)"
+    class="font-mono text-sm border-b border-transparent hover:(opacity-100 border-current)"
+    :class="info.rule?.classes != null ? [info.rule.classes, 'opacity-75'] : 'opacity-50'"
   >
     <span>{{ props.name }}</span>
     <sup v-if="note && note != 1" class="opacity-50 ml-0.5">{{ note }}</sup>

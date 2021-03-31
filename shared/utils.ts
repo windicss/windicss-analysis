@@ -39,3 +39,26 @@ export async function tryPort(start = 4000): Promise<number> {
 export function getFileExt(path: string) {
   return path.slice(path.lastIndexOf('.') + 1).toLowerCase()
 }
+
+export type Arrayable<T> = T | T[]
+
+export function toArray<T>(v: Arrayable<T>): T[] {
+  if (Array.isArray(v))
+    return v
+  return [v]
+}
+
+export function registerRegExpToJSON() {
+  // @ts-expect-error
+  const original = RegExp.prototype.toJSON
+  // @ts-expect-error
+  // eslint-disable-next-line no-extend-native
+  RegExp.prototype.toJSON = function() {
+    return this.toString().slice(1, -1)
+  }
+  return () => {
+    // @ts-expect-error
+    // eslint-disable-next-line no-extend-native
+    RegExp.prototype.toJSON = original
+  }
+}

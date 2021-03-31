@@ -1,6 +1,6 @@
 import { MaybeRef } from '@vueuse/core'
 import { computed, ref, unref } from 'vue'
-import { AnalysisReport, uniq } from '@shared'
+import { AnalysisReport, matchRule, uniq } from '@shared'
 
 export const data = ref<AnalysisReport | null>()
 
@@ -52,6 +52,7 @@ export function getUtilityInfo(name: MaybeRef<string>) {
         .filter(i => i.base === utility?.base && i.full !== utility.full)
         .map(i => i.full),
     ),
+    rule: matchRule(utility!),
   }
 }
 

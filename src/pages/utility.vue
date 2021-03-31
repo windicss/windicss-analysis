@@ -30,8 +30,20 @@ watch(
 <template>
   <div class="container">
     <BackHome />
-    <div class="px-2 py-1 -mx-2 font-mono text-3xl mb-4 bg-gray-400 bg-opacity-5 rounded inline-block">
-      {{ name }}
+    <div class="mb-4 -mx-2">
+      <span
+        class="px-2 py-1 font-mono text-3xl"
+        :class="info.rule?.classes"
+      >
+        {{ name }}
+      </span>
+      <span
+        v-if="info.rule?.name"
+        class="px-2 py-1 bg-gray-400 bg-opacity-5 rounded text-sm line-block align-top -mt-1"
+        :class="info.rule?.classes"
+      >
+        {{ info.rule?.name }}
+      </span>
     </div>
     <div class="mb-8 grid gap-x-4 gap-y-2" style="grid-template-columns: max-content auto;">
       <div class="opacity-50 text-sm my-auto">
@@ -62,7 +74,7 @@ watch(
         </div>
       </template>
 
-      <template v-if="name !== info.base">
+      <template v-if="name !== info.base && info.base">
         <div class="opacity-50 text-sm my-auto">
           Base
         </div>
