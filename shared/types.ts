@@ -30,6 +30,7 @@ export interface ColorInfo {
   name: string
   hex: string
   utilities: string[]
+  variants: string[]
 }
 
 export interface AnalysisReport {
