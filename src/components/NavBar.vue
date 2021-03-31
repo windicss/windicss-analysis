@@ -9,7 +9,7 @@ import { name } from '~/logic'
       <div class="ml-2 my-auto">
         <div class="text-xl">
           Windi Analyzer
-          <sup class="opacity-50 italic text-xs">Alpha</sup>
+          <sup class="opacity-50 italic text-xs">Beta</sup>
         </div>
         <div class="text-sm font-mono opacity-50">
           {{ name }}
