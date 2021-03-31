@@ -5,12 +5,12 @@ export const defaultRules: HighlightRule[] = [
   {
     name: 'important',
     regex: /^!/,
-    classes: 'text-red-400',
+    classes: 'dark:text-red-400 text-red-600',
   },
   {
     name: 'shortcut',
     category: 'shortcut',
-    classes: 'text-teal-400',
+    classes: 'dark:text-teal-400 text-teal-600',
   },
   {
     name: 'implicit-infer',
@@ -18,12 +18,17 @@ export const defaultRules: HighlightRule[] = [
       /[0-9](?:em|px|rem|vw|vh|cm)$/,
       /-hex-/,
     ],
-    classes: 'text-orange-400',
+    classes: 'dark:text-orange-400 text-orange-600',
   },
   {
     name: 'explicit-infer',
     regex: /\[.*\]/,
-    classes: 'text-green-400',
+    classes: 'dark:text-green-400 text-green-600',
+  },
+  {
+    name: 'decimal',
+    regex: /\d\.\d/,
+    classes: 'dark:text-yellow-400 text-yellow-600',
   },
   {
     name: 'prefixed',

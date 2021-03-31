@@ -29,7 +29,7 @@ export const name = computed(() => {
 export const colors = computed(() => {
   return Object.values(data.value?.colors || {})
     .sort((a, b) => b.utilities.length - a.utilities.length)
-    .filter(i => i.name !== 'transparent')
+    .filter(i => !['transparent', 'current'].includes(i.name))
 })
 
 export const root = computed(() => data.value?.root || '')
