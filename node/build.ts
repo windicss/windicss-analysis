@@ -6,6 +6,7 @@ import { runAnalysis } from './analysis'
 export interface BuildOptions {
   root: string
   outDir: string
+  demo?: boolean
   windiOptions?: UserOptions
 }
 
@@ -20,6 +21,8 @@ export async function generateBuild(options: BuildOptions) {
 
   const headScript = `
 window.__windicss_analysis_static = true
+window.__windicss_analysis_static_host = true
+window.__windicss_analysis_demo = ${JSON.stringify(options.demo || false)}
 window.__windicss_analysis_report = ${JSON.stringify(result)}
 `
 

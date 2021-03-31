@@ -97,14 +97,22 @@ watch(
       <div class="subheader">
         Shortcuts
       </div>
-      <CodeBlock lang="json" :code="JSON.stringify(info.shortcut, null, 2)" />
+      <CodeBlock
+        class="!-mx-3"
+        lang="json"
+        :code="JSON.stringify(info.shortcut, null, 2)"
+      />
     </template>
 
     <template v-if="css">
       <div class="subheader">
         CSS
       </div>
-      <CodeBlock lang="css" :code="css" />
+      <CodeBlock
+        class="!-mx-3"
+        lang="css"
+        :code="css"
+      />
     </template>
     <br>
     <div class="subheader">

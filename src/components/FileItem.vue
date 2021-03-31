@@ -3,6 +3,7 @@ import { defineProps, computed } from 'vue'
 import { getFileExt } from '@shared'
 import { root } from '~/logic'
 import { editor } from '~/logic/preferences'
+import { isStaticHost } from '~/env'
 
 const props = defineProps({
   path: {
@@ -17,7 +18,7 @@ const url = computed(() => `${editor.value}://file/${props.path}`)
 
 <template>
   <a
-    :href="url"
+    :href="isStaticHost ? undefined : url"
     class="py-2 px-3 -mx-3 text-sm bg-gray-400 font-mono bg-opacity-0 hover:bg-opacity-10 rounded"
   >
     <FileIcon :type="getFileExt(filepath)" />

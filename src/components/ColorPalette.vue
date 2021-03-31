@@ -30,16 +30,16 @@ const filteredColors = computed(() => filterColors(prefix.value))
         <sup class="opacity-50 text-sm">{{ filteredColors.length }}</sup>
       </div>
       <div class="flex-auto" />
-      <div v-if="filterColors('dark').length">
-        <OptionsSwitch
-          v-model="prefix"
-          :items="[
-            { value: '', display: 'All' },
-            { value: '!dark', display: 'Light' },
-            { value: 'dark', display: 'Dark' },
-          ]"
-        />
-      </div>
+      <OptionsSwitch
+        v-if="filterColors('dark').length"
+        v-model="prefix"
+        class="mt-auto mb-3"
+        :items="[
+          { value: '', display: 'All' },
+          { value: '!dark', display: 'Light' },
+          { value: 'dark', display: 'Dark' },
+        ]"
+      />
     </div>
 
     <div class="flex flex-wrap gap-2 -mx-2">

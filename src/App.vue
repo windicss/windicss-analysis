@@ -1,7 +1,5 @@
-<script setup lang="ts">
-</script>
-
 <template>
   <NavBar />
   <RouterView />
+  <Footer />
 </template>
