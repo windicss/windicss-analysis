@@ -1,4 +1,4 @@
-import { generateBuild } from './node'
+import { generateBuild } from '../node'
 
 generateBuild({
   demo: true,
