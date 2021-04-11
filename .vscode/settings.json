@@ -1,4 +1,4 @@
 {
   "vite.port": 8113,
-  "vite.devCommand": "npm run dev --"
+  "vite.devCommand": "npm run dev -- --open=false"
 }

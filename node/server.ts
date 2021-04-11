@@ -2,7 +2,7 @@ import http from 'http'
 import { resolve } from 'path'
 import connect from 'connect'
 import openUrl from 'open'
-import serveStatic from 'serve-static'
+import sirv from 'sirv'
 import { cyan, yellow } from 'chalk'
 import { tryPort } from '../shared'
 import { version } from '../package.json'
@@ -29,9 +29,9 @@ export async function startServer(options: ServerOptions = {}) {
   }))
 
   app.use(
-    serveStatic(
+    sirv(
       resolve(__dirname, '../dist/app'),
-      { cacheControl: false },
+      { dev: true, single: true },
     ),
   )
 

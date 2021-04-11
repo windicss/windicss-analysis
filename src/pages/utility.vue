@@ -56,7 +56,7 @@ watch(
       class="mb-8 grid gap-x-4 gap-y-2"
       style="grid-template-columns: max-content auto;"
     >
-      <div class="opacity-50 text-sm my-auto">
+      <div class="opacity-50 text-sm my-auto text-red-200">
         Total usages
       </div>
       <div>{{ info.count }}</div>
