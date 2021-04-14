@@ -94,7 +94,7 @@ export const categories = computed(() => {
 
 export const categorized = computed(() => {
   if (!data.value)
-    return {}
+    return []
 
   return categories.value
     .map(i => ({
