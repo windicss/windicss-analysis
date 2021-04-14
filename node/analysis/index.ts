@@ -1,5 +1,6 @@
 import { promises as fs, existsSync } from 'fs'
 import { join } from 'path'
+import { declass } from 'declass'
 import { createUtils, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
 import type { Shortcut } from 'windicss/types/interfaces'
 import gzipSize from 'gzip-size'
@@ -31,6 +32,7 @@ export async function runAnalysis(
 
   const root = utils.options.root
   const files: FileInfo[] = []
+  const allcodes: { filepath: string; code: string }[] = []
   for (const filepath of await utils.getFiles()) {
     let code = await fs.readFile(filepath, 'utf-8')
     code = utils.transformGroups(code)
@@ -39,6 +41,7 @@ export async function runAnalysis(
       utilities: classes || [],
       filepath,
     })
+    allcodes.push({ filepath, code })
   }
 
   const shortcuts: Record<string, Shortcut> = utils.processor.config('shortcuts') || {} as any
@@ -86,12 +89,30 @@ export async function runAnalysis(
       }]),
   )
 
+  const _files: {[key: string]: string[]} = {}
+  const _groups = await declass(allcodes.map(({ code }) => code).join('\n'))
+
+  allcodes.forEach(({ code, filepath }) => {
+    const g: string[] = []
+    _groups.forEach((group) => {
+      for (const e of group.uses) {
+        if (code.search(e) !== -1)
+          g.push(group.class)
+      }
+    })
+    if (Object.keys(g).length > 0) _files[filepath] = g
+  })
+
   const result: AnalysisReport = {
     root,
     include: utils.options.scanOptions.include,
     exclude: utils.options.scanOptions.exclude,
     colors,
     files,
+    groups: {
+      files: _files,
+      groups: _groups,
+    },
     utilities,
     shortcuts,
     bases,

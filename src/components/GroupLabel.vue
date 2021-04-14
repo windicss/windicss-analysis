@@ -12,7 +12,7 @@ const props = defineProps({
   },
 })
 
-const url = computed(() => `/utility?name=${encodeURIComponent(props.name)}`)
+const url = computed(() => `/shortcut?name=${encodeURIComponent(props.name)}`)
 const info = computed(() => getUtilityInfo(props.name))
 </script>
 

@@ -37,6 +37,8 @@ export const fullUtilities = computed(() => (data.value?.files || []).flatMap(i 
 export const utilityNames = computed(() => Object.keys(data.value?.utilities || {}).sort())
 export const utilities = computed(() => Object.values(data.value?.utilities || {}))
 
+export const groups = computed(() => data.value?.groups.groups || [])
+
 export const files = computed(() =>
   (data.value?.files || [])
     .filter(i => i.utilities.length)
@@ -58,6 +60,18 @@ export function getUtilityInfo(name: MaybeRef<string>) {
         .map(i => i.full),
     ),
     rule: matchRule(utility!),
+  }
+}
+
+export function getShortcutInfo(name: MaybeRef<string>) {
+  const groups = data.value?.groups
+  const group = unref(name)
+  return {
+    ...groups?.files,
+    full: true,
+    category: 'group',
+    count: groups?.groups.filter(i => i.class === name).map(i => i.uses.length).reduce((a, b) => a + b, 0),
+    files: groups ? Object.keys(groups.files).filter(i => groups.files[i].includes(group)) : [],
   }
 }
 

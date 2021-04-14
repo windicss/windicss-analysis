@@ -42,6 +42,15 @@ export interface AnalysisReport {
   files: FileInfo[]
   colors: Record<string, ColorInfo>
   utilities: Record<string, UtilityInfo>
+  groups: {
+    files: {
+      [key: string]: string[]
+    }
+    groups: {
+      class: string
+      uses: string[]
+    }[]
+  }
   bases: Record<string, BaseInfo>
   shortcuts: Record<string, Shortcut>
   dist: {
