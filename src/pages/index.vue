@@ -9,6 +9,7 @@ import { isDemo } from '~/env'
     <TopUtilities class="pb-2" />
     <ColorPalette class="pb-2" />
     <UtilitiesUsage class="pb-2" />
+    <GroupList />
     <FilesList class="pb-2" />
   </div>
 </template>

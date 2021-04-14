@@ -22,7 +22,7 @@ export default defineConfig({
         mono: '"Fira Code", monospace',
       },
       colors: {
-        primary: (colors.lightBlue as any)['400'],
+        primary: colors.lightBlue[400],
       },
     },
   },
