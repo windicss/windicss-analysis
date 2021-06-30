@@ -90,13 +90,13 @@ export async function runAnalysis(
   )
 
   const _files: {[key: string]: string[]} = {}
-  const _groups = await declass(allcodes.map(({ code }) => code).join('\n'))
+  const _groups = declass(allcodes.map(({ code }) => code).join('\n'))
 
   allcodes.forEach(({ code, filepath }) => {
     const g: string[] = []
     _groups.forEach((group) => {
       for (const e of group.uses) {
-        if (code.search(e) !== -1)
+        if (code.includes(e))
           g.push(group.class)
       }
     })
