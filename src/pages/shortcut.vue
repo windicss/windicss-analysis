@@ -9,7 +9,7 @@ const name = computed(() => route.query.name as string || '')
 
 const info = computed(() => getShortcutInfo(name.value))
 
-const url = computed(() => `/api/interpret?name=${encodeURIComponent(name.value)}`)
+const url = computed(() => `${location.pathname}api/interpret?name=${encodeURIComponent(name.value)}`)
 const request = useFetch(url, { immediate: false, refetch: false })
 const css = computed(() => {
   return request.data.value

@@ -11,7 +11,7 @@ export async function fetchData(refetch = false) {
     data.value = window.__windicss_analysis_report
   }
   else {
-    data.value = await fetch(`/api/report.json${refetch ? '?force=true' : ''}`)
+    data.value = await fetch(`${location.pathname}api/report.json${refetch ? '?force=true' : ''}`)
       .then(r => r.json())
   }
   return data.value

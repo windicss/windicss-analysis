@@ -10,7 +10,7 @@ const name = computed(() => route.query.name as string || '')
 
 const info = computed(() => getUtilityInfo(name.value))
 
-const url = computed(() => `/api/interpret?name=${encodeURIComponent(name.value)}`)
+const url = computed(() => `${location.pathname}api/interpret?name=${encodeURIComponent(name.value)}`)
 const request = useFetch(url, { immediate: false, refetch: false })
 const css = computed(() => {
   if (info.value.css)
