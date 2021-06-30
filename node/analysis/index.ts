@@ -12,6 +12,7 @@ const NAME = 'windicss-analysis'
 
 export interface AnalysisOptions {
   interpretUtilities?: boolean
+  utils?: WindiPluginUtils
 }
 
 export interface AnalysisReturn {
@@ -27,7 +28,7 @@ export async function runAnalysis(
     interpretUtilities = false,
   } = options
 
-  const utils = createUtils(userOptions, { name: NAME })
+  const utils = options.utils ?? createUtils(userOptions, { name: NAME })
   await utils.init()
 
   const root = utils.options.root
