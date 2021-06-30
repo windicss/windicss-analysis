@@ -24,7 +24,7 @@ export async function startServer(options: ServerOptions = {}) {
   const app = connect()
   const url = `http://localhost:${port}`
 
-  app.use(ApiMiddleware({
+  app.use('/api', ApiMiddleware({
     root,
   }))
 

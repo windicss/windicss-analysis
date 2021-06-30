@@ -10,7 +10,7 @@ async function start() {
       {
         name: 'server',
         configureServer(server) {
-          server.middlewares.use(ApiMiddleware())
+          server.middlewares.use('/api/', ApiMiddleware())
         },
       },
     ],
