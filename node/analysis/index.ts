@@ -35,7 +35,7 @@ export async function runAnalysis(
   const allcodes: { filepath: string; code: string }[] = []
   for (const filepath of await utils.getFiles()) {
     let code = await fs.readFile(filepath, 'utf-8')
-    code = utils.transformGroups(code)
+    code = utils.transformGroups(code)?.code || code
     const { classes } = await utils.applyExtractors(code, filepath)
     files.push({
       utilities: classes || [],
