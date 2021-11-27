@@ -15,7 +15,7 @@ import { utilities, data, files, colors } from '~/logic'
       <br>
       <span class="opacity-50 mx-1">with</span>
       <span class="text-xl">{{ data?.dist.gzip }}</span>
-      <span class="opacity-50 mx-1">coresponding CSS genreated (min+gzip)</span>
+      <span class="opacity-50 mx-1">corresponding CSS generated (min+gzip)</span>
     </div>
   </div>
 </template>
