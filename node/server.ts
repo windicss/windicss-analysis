@@ -41,7 +41,7 @@ export async function startServer(options: ServerOptions = {}) {
     openUrl(url)
 
   // eslint-disable-next-line no-console
-  console.log(`${cyan`Windi Analyser`} v${version} started at ${yellow(url)}`)
+  console.log(`${cyan`Windi Analyzer`} v${version} started at ${yellow(url)}`)
 
   return app
 }
